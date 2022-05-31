@@ -32,7 +32,7 @@ Password: [REDACTED]
 Upon successful login, one is greeted with an overall management page. Whilst a little unintuitive, the various tabs along the top right of the management page allow for various aspects of the router's functionality to be configured.
 
 **IMPORTAANT: The EdgeRouter is arguably the most important piece of kit in the touring setup. Without it in a functional state, the touring VLANs
-would have no routing and no DHCP server. It is therefore imperative that configuration changes are documented here when they are made, and that no changes are made without sufficient time to test their ramifications in a non-show-critical environment**
+would have no routing and no DHCP server. It is therefore imperative that configuration changes are documented here when they are made, and that no changes are made without sufficient time to test their ramifications in a non-show-critical environment.**
 
 Interface Assignments
 ---------------------
