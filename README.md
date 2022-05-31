@@ -7,3 +7,11 @@ This included VLAN configuration, router configuration, switch configuration, an
 
 For network gear with this functionality, the _running configuration_ is also included. This is a file containing all the configuration commands
 which make up the way in which a switch or other network device is currently set to operate.
+
+List of BTS networking gear covered by this document:
+-----------------------------------------------------
+
+1. Touring rack switches
+2. Touring rack Ubiquiti EdgeRouter
+3. Small touring HP PoE-capable switches
+4. Cisco 3702 autonomous wireless access points (APs)
