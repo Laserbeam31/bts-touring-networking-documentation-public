@@ -8,6 +8,9 @@ This included VLAN configuration, router configuration, switch configuration, an
 For network gear with this functionality, the _running configuration_ is also included. This is a file containing all the configuration commands
 which make up the way in which a switch or other network device is currently set to operate.
 
+For security reasons, encryption keys, sensitive infomation, and passwords must be redacted from configuration files/details before being uploaded
+to this repository.
+
 List of BTS networking gear covered by this document:
 -----------------------------------------------------
 
