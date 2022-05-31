@@ -20,7 +20,7 @@ Terminology:
         
 `Firewall`  = A means of regulating network traffic between devices and networks.
 
-Configuration Accessibility:
+Configuration accessibility:
 ----------------------------
 
 It is easiest to configure the EdgeRouter from its web interface. Connect an ethernet cable between a management switch port (see "touring_racks" file)
@@ -34,7 +34,7 @@ Upon successful login, one is greeted with an overall management page. Whilst a 
 **IMPORTAANT: The EdgeRouter is arguably the most important piece of kit in the touring setup. Without it in a functional state, the touring VLANs
 would have no routing and no DHCP server. It is therefore imperative that configuration changes are documented here when they are made, and that no changes are made without sufficient time to test their ramifications in a non-show-critical environment.**
 
-Interface Assignments:
+Interface assignments:
 ----------------------
 
 The following physical interfaces on the EdgeRouter are set to correspond to specific networks:
@@ -53,7 +53,7 @@ prohibited, and only traffic from the
 internet VLAN is allowed through to the router's WAN interface. Uninitiated traffic into the WAN connection (i.e. that which isn't in reponse to any
 outgoing connection established from the local side of the router) interface is blocked by default.
 
-DHCP Server:
+DHCP server:
 ------------
 
 A DHCP server instance is configured for each VLAN on the LAN interface. This allows devices connected, through the touring switches, to automatically
