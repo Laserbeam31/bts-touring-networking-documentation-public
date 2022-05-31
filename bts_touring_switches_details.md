@@ -52,6 +52,28 @@ redundant inter-switch set is used at any one time. Having more than one trunk l
 would result in a _broadcast storm_ whereby traffic flows indefinitely through the duplicate links and inhibits the switches' ability
 to pass traffic at all.
 
+Untagged link configuration
+---------------------------
+
+As per the touring racks' labelling, groups of ports are assigned particular departmental VLANs. The process whereby ports are allocated from being a
+trunk link to belonging to a specific VLAN is known as _untagging_. Ports which are untagged - as the name suggests - remove the VLAN tag from their
+outbound traffic, and apply it to their inbound traffic.
+
+The spanning tree settings for untagged ports are a little different from those of the _tagged_ trunk links. This is because trunk links are often (and indeed, should) be connected up in a redundant topology to improve resilience, whereas this is far less common in the case of untagged ports. This means that untagged ports are configured with the _portfast_ spanning tree setting enabled. The portfast setting bypasses some of the initial spanning tree negotiation stages (namely Listening and Learning) such that, upon connection of a client device, the Ethernet link comes up instantly. Only if a loop is _subsequently_ detected will an untagged port shut itself down to avoid a broadcast storm. This is in contrast to the behaviour of a trunk port: a trunk port, upon connectiion of an inter-switch trunk link, initially holds off from activating the link untiil it is certain that a problematic loop is not present. The advantage of enabling portfast is that it allows newly-connected links to come up faster; the disadvantage is that, since it bypasses the initial negotiation stages of the connection, and only subsequently shuts off a port if a redundant loop is detected, it increases the chance of a momentary broadcast loop.
+
+Configuration access
+--------------------
+
+To access the switch configuration, a number of options are available:
+
+1. SSH - This is the most secure method. Connect a computer to the "management" port on a touring switch, and SSH into the switch. The IP addresses of the 
+         switches can be ascertained by running an IP scan.
+         
+2. Telnet - This is much the same as SSH, except unencrypted.
+
+3. Serial console - This involves connecting a serial console cable to the RJ-45 port on the _back_ of a touring switch. This serial cable is then
+                    connected to a computer by means of an RS232 connection.
+
 Running configuration
 ---------------------
 
