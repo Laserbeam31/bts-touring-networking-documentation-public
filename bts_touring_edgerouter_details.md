@@ -26,7 +26,7 @@ Configuration accessibility:
 It is easiest to configure the EdgeRouter from its web interface. Connect an ethernet cable between a management switch port (see "touring_racks" file)
 and a computer, wait for the computer to receive a DHCP lease, and enter the IP address `10.0.2.254` into the computer's web browser. A login prompt apppears. The credentials are as follows:
 
-Username: [REDACTED]
+Username: [REDACTED]\
 Password: [REDACTED]
 
 Upon successful login, one is greeted with an overall management page. Whilst a little unintuitive, the various tabs along the top right of the management page allow for various aspects of the router's functionality to be configured.
@@ -39,9 +39,9 @@ Interface assignments:
 
 The following physical interfaces on the EdgeRouter are set to correspond to specific networks:
 
-Eth2  = WAN. This connects to the BUCS university network
+`Eth2`  = WAN. This connects to the BUCS university network
 
-Eth0  = LAN. In the router's software, this is further split into VLANs - each corresponding to one on the touring switches (see VLANs.md).
+`Eth0`  = LAN. In the router's software, this is further split into VLANs - each corresponding to one on the touring switches (see VLANs.md).
         A VLAN on Eth0 is designated as Eth0.xx, where xx is the VLAN ID.
 
 Firewall:
