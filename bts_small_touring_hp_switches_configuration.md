@@ -6,16 +6,16 @@ touring racks, because the Cisco switches in the touring racks (see "touring rac
 
 Due to their versatility, these switches do not have a particular permanent configuration setup. But a couple of common scenarios are discussed below.
 
-Credentials
------------
+Credentials:
+------------
 
 For management access
 
 username: manager\
 password [REDACTED]
 
-Configuration access
---------------------
+Configuration access:
+---------------------
 
 To access the switch configuration, a number of options are available:
 
@@ -46,8 +46,8 @@ When finishing entering configuration commands, ensure the following actions are
 2. **Update the documentation according to the new configuration changes!!** At very least, the documentation should have its copy of the running
    config updated. If a major change has been made, the expolanatory must also be updated.
 
-Basic setup
------------
+Basic setup:
+------------
 
 In their most basic use-case, the switches' ports are set to the same VLAN. This has the effect of making the switch act as a dumb switch, allowing
 traffic to be forwarded between any ports.
@@ -65,8 +65,8 @@ vlan 1
 password manager
 ```
 
-Setup for use with BTS touring racks
-------------------------------------
+Setup for use with BTS touring racks:
+-------------------------------------
 
 In this case, one or two ports are assigned to be trunk ports. These uplink with a trunk port on one of the main touring switches
 in one of the racks. VLANs which
