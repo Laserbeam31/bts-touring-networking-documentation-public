@@ -8,8 +8,7 @@ For the APs to work correctly, they must:
 a) Be connected to a PoE-capable switch or PoE injector;
 b) Be connected to a trunk port, so that all the necessary VLANs for the SSIDs can be accessed.
 
-The native vlan for the APs is set to 2. This is the same as that of the touring switches, and
-means that all the networking gear can be configured over the same VLAN by connecting to the "management" port on a given touring switch.
+The APs have capability for 2.4GHz as well as the newer 5GHz WiFi bands. In their current configuration, the 5GHz capability is disabled because it can occasionally cause MAC-address-related issues on upstream routers/firewalls due to the fact that client devices tend to have two separate MAC addresses - one for their 2.4GHz radio and one for their 5GHz radio. 2.4GHz also provides better coverage that 5GHz - which is an important consideration when these APs are ised for touring purposes.
 
 Credentials
 -----------
