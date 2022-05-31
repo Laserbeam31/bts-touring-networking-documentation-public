@@ -28,4 +28,4 @@ Please follow the following conventions when contributing to the documentation:
 2. Files covering install gear are named "bts_install_[location of install]_xxxx";
 3. Document headers are entirely capitalised and of the "====" markdown size;
 4. Document sub-titles only have their first word capitalised, are terminated with a colon, and are of the "----" markdown size;
-5. Commands, key technical terms, and configuration files should be formatted as code by preceding and proceding with "```".
+5. Commands, key technical terms, and configuration files should be formatted as code by preceding and proceding them by "```".
