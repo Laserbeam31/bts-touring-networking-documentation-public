@@ -1,5 +1,5 @@
-BTS Cisco 3702 Touring APs Configuration Documentation
-======================================================
+Documentation for the BTS Cisco 3702 Touring APs
+================================================
 
 The BTS 3702 APs are set up to be able to access VLANs for sound (Dante Primary), lighting (LX),
 video control, and internet through a set of different SSID, each mapped to a specific VLAN.
