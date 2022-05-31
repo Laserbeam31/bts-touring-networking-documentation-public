@@ -2,13 +2,15 @@ Documentation for the BTS Cisco 3702 Touring APs
 ================================================
 
 The BTS 3702 APs are set up to be able to access VLANs for sound (Dante Primary), lighting (LX),
-video control, and internet through a set of different SSID, each mapped to a specific VLAN.
+video control, and internet through a set of different SSIDs, each mapped to a specific VLAN.
 
 For the APs to work correctly, they must:
-a) Be connected to a PoE-capable switch or PoE injector;
-b) Be connected to a trunk port, so that all the necessary VLANs for the SSIDs can be accessed.
+1. Be connected to a PoE-capable switch or PoE injector;
+2. Be connected to a trunk port, so that all the necessary VLANs for the SSIDs can be accessed.
 
-The APs have capability for 2.4GHz as well as the newer 5GHz WiFi bands. In their current configuration, the 5GHz capability is disabled because it can occasionally cause MAC-address-related issues on upstream routers/firewalls due to the fact that client devices tend to have two separate MAC addresses - one for their 2.4GHz radio and one for their 5GHz radio. 2.4GHz also provides better coverage that 5GHz - which is an important consideration when these APs are ised for touring purposes.
+The APs are intended only for use with the touring rack networks, and are not set up for standalone use!
+
+The APs have capability for 2.4GHz as well as the newer 5GHz WiFi bands. In their current configuration, the 5GHz capability is disabled because it can occasionally cause MAC-address-related issues on upstream routers/firewalls due to the fact that client devices tend to have two separate MAC addresses - one for their 2.4GHz radio and one for their 5GHz radio. 2.4GHz also provides better coverage than 5GHz - which is an important consideration when these APs are used for touring purposes.
 
 Credentials:
 ------------
@@ -43,9 +45,10 @@ To access the AP configuration, a number of options are available:
                     connected to a computer by means of an RS232 connection;
                     
 4. Web interface  - Whilst ostensibly nice and simple, these Cisco APs' web interfaces are buggy and slow. Avoid at all costs! Configuring via the CLI
-                    may seem daunting, but with a little reading of the manual, saves much time and head-scratching in the long term! If the web interface
+                    may seem daunting, but with a little reading of the manual, it saves much time and head-scratching in the long term! If the web
+                    interface
                     must be accessed, follow the same procedure as outlined for an SSH connection, but use the assigned IP address to establish an
-                    HTTP connection instead.
+                    HTTP connection instead via a web browser.
                     
 Upon login, one is typically greeted with a command prompt which ends in `>`. To actuallly access useful settings from here, type `enable`.
 Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command prompt, useful commands can be run:
@@ -62,7 +65,7 @@ When finishing entering configuration commands, ensure the following actions are
 2. **Update the documentation according to the new configuration changes!!** At very least, the documentation should have its copy of the running
    config updated. If a major change has been made, the expolanatory must also be updated. Configuration changes made via the web interface have the
    effect, under the hood, of changing the running config. Using the web interface to make configuration changes is therefore no excuse for not
-   updating this documentation's copy of the cunning config!
+   updating this documentation's copy of the running config!
 
 Running configuration:
 ----------------------
