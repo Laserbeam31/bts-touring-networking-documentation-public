@@ -1,13 +1,13 @@
 Documentation for the BTS Touring Network Switches
-===================================================
+==================================================
 
 The managed BTS switches use VLANs to logically segregate traffic into virtual networks. Each VLAN can be thought of as its own virtual network. For example, unless you deliberately bridge VLAN 50 and 60, devices on V50 can all see each other
 but can't see anything on V60 even though they're both using the same switches and cable.
 
 When data enters the network at a port on a switch, the port is configured to 'tag' it as belonging to a particular VLAN. This tagged traffic can be passed to any other switch that works with IEEE 802.1q ('dot1q'), even if the switch is from a different manufacturer. When the traffic leaves the switch by a port that isn't connected to another switch, the switch removes the VLAN tag and this has the benefit of ensuring more basic devices aren't confused by it.
 
-VLANs on the switches
----------------------
+VLANs on the switches:
+----------------------
 
 The VLANs currently assigned within BTS are as follows. Note that BTS also have VLAN 400 on the BUCS network; this is provisioned on request and should be considered entirely separately to these numbers:
 
@@ -33,8 +33,8 @@ Each VLAN is configured to receive DHCP from the EdgeRouter in the master networ
 where necessary.
 For more information, see the "touring_edgerouter" file.
 
-Trunk link configuration
-------------------------
+Trunk link configuration:
+-------------------------
 
 The trunk links between the touring switches in all the racks carry combined traffic for all VLANs between each rack. When network trafffic
 enters the switch on a trunk connection, it is sent to its relevant VLAN. Likewise, when traffic from a specific VLAN leaves the switch
@@ -52,8 +52,8 @@ redundant inter-switch set is used at any one time. Having more than one trunk l
 would result in a _broadcast storm_ whereby traffic flows indefinitely through the duplicate links and inhibits the switches' ability
 to pass traffic at all.
 
-Untagged link configuration
----------------------------
+Untagged link configuration:
+----------------------------
 
 As per the touring racks' labelling, groups of ports are assigned particular departmental VLANs. The process whereby ports are allocated from being a
 trunk link to belonging to a specific VLAN is known as _untagging_. Ports which are untagged - as the name suggests - remove the VLAN tag from their
@@ -61,8 +61,8 @@ outbound traffic, and apply it to their inbound traffic.
 
 The spanning tree settings for untagged ports are a little different from those of the _tagged_ trunk links. This is because trunk links are often (and indeed, should) be connected up in a redundant topology to improve resilience, whereas this is far less common in the case of untagged ports. This means that untagged ports are configured with the _portfast_ spanning tree setting enabled. The portfast setting bypasses some of the initial spanning tree negotiation stages (namely Listening and Learning) such that, upon connection of a client device, the Ethernet link comes up instantly. Only if a loop is _subsequently_ detected will an untagged port shut itself down to avoid a broadcast storm. This is in contrast to the behaviour of a trunk port: a trunk port, upon connectiion of an inter-switch trunk link, initially holds off from activating the link untiil it is certain that a problematic loop is not present. The advantage of enabling portfast is that it allows newly-connected links to come up faster; the disadvantage is that, since it bypasses the initial negotiation stages of the connection, and only subsequently shuts off a port if a redundant loop is detected, it increases the chance of a momentary broadcast loop.
 
-Configuration access
---------------------
+Configuration access:
+---------------------
 
 To access the switch configuration, a number of options are available:
 
@@ -88,8 +88,8 @@ When finishing entering configuration commands, ensure the following actions are
 2. **Update the documentation according to the new configuration changes!!** At very least, the documentation should have its copy of the running
    config updated. If a major change has been made, the expolanatory must also be updated.
 
-Running configuration
----------------------
+Running configuration:
+----------------------
 
 ```
 Current configuration : 9185 bytes
