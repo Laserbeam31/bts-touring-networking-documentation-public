@@ -40,7 +40,7 @@ To access the switch configuration, a number of options are available:
          
 2. Telnet         - This is much the same as SSH, except unencrypted;
 
-3. Serial console - This involves connecting a serial console cable to the RJ-45 port on the _back_ of an AP. This serial cable is then
+3. Serial console - This involves connecting a serial console cable to the RJ-45 port on the back of an AP. This serial cable is then
                     connected to a computer by means of an RS232 connection;
                     
 4. Web interface  - Whilst ostensibly nice and simple, these Cisco APs' web interfaces are buggy and slow. Avoid at all costs! Configuring via the CLI
