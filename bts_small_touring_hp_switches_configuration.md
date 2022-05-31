@@ -6,11 +6,45 @@ touring racks, because the Cisco switches in the touring racks (see "touring rac
 
 Due to their versatility, these switches do not have a particular permanent configuration setup. But a couple of common scenarios are discussed below.
 
-Management credentials
-----------------------
+Credentials
+-----------
+
+For management access
 
 username: manager\
 password [REDACTED]
+
+Configuration access
+--------------------
+
+To access the switch configuration, a number of options are available:
+
+1. SSH            - This is the most secure method. Connect a computer to an untagged port, on a VLAN on which the switch is set to receive an IP address,                     and SSH into the switch. The IP address of the switch can be ascertained by running an IP scan;
+         
+2. Telnet         - This is much the same as SSH, except unencrypted;
+
+3. Serial console - This involves connecting a serial console cable to the RJ-45 port on the left-hand side of a switch's front panel. This serial cable is                     then connected to a computer by means of an RS232 connection.
+                   
+Upon login, one is typically greeted with a command prompt which ends in `>`. To actuallly access useful settings from here, type `enable`.
+Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command prompt, useful commands can be run:
+
+`sh run`          - Shows the current configuration of the switch, in a user-friendly text file format. To back up the switch configuration, simply copy                       and paste the command's output into a notepad file, or some equivalent thereof.
+           
+ `conf t`         - Short for "configure terminal". Enters the command mode in which configuration commands may be entered, to change the switch
+                    settings.
+                    
+ `int xx/xx`      - In configuration mode, this has the effect of selecting a specific port for more detailed access.
+
+Note that the configuration commands for HP switches are somewhat different to those for Cisco switches. The most notable difference one is likely
+to encounter is the way in which VLANs are allocated to ports and trunk lines. Whereas on a Cisco switch, a trunk port may be allocated simply
+by selecting the interface and stating `switchport mode trunk`, HP switches require that VLANs be tagged to a specific port - which implicitly makes the port in question a trunk line. Untagged non-trunking "access" ports are allocated by _untagging_ VLANs to specific interfaces. For detailed example commands, see the configuration examples below.
+
+When finishing entering configuration commands, ensure the following actions are done:
+
+1. Run `end` followed by `reload` to ensure the settings are saved and therefore persist across the next reboot of the switch;
+
+2. **Update the documentation according to the new configuration changes!!** At very least, the documentation should have its copy of the running
+   config updated. If a major change has been made, the expolanatory must also be updated.
 
 Basic setup
 -----------
