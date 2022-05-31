@@ -50,10 +50,10 @@ To access the AP configuration, a number of options are available:
 Upon login, one is typically greeted with a command prompt which ends in `>`. To actuallly access useful settings from here, type `enable`.
 Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command prompt, useful commands can be run:
 
-`sh run`          - Shows the current configuration of the switch, in a user-friendly text file format. To back up the switch configuration, simply copy                       and paste the command's output into a notepad file, or some equivalent thereof.
+- `sh run`          - Shows the current configuration of the switch, in a user-friendly text file format. To back up the switch configuration, simply copy                       and paste the command's output into a notepad file, or some equivalent thereof.
            
- `conf t`         - Short for "configure terminal". Enters the command mode in which configuration commands may be entered, to change the switch
-                    settings.
+- `conf t`          - Short for "configure terminal". Enters the command mode in which configuration commands may be entered, to change the switch
+                      settings.
                     
 When finishing entering configuration commands, ensure the following actions are done:
 
