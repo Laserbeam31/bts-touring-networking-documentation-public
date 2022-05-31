@@ -31,7 +31,7 @@ SSID details:
 Configuration access:
 ---------------------
 
-To access the switch configuration, a number of options are available:
+To access the AP configuration, a number of options are available:
 
 1. SSH            - This is the most secure method. Temporarily connect the AP to a non-trunk port on a touring switch with an active DHCP server.
                     It will receive a DHCP lease. Find this IP address (IP scan, or view the EdgeRouter DHCP lease table) and use it to establish
