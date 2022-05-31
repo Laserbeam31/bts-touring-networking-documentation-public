@@ -44,3 +44,5 @@ For those wishing to learn more about fundamental networking principles, the fol
 - https://www.cisco.com/c/en/us/support/all-products.html (Useful for Cisco devices)
 
 - https://asp.arubanetworks.com/downloads;productIds=UHJvZHVjdDoxNDU4MDJlMi0yZTAwLTExZTgtYmY4Yy0zMzhmOGQwMWM1MjE%3D (Useful for HP (now Aruba) networking gear)
+
+- https://www.audinate.com/learning/training-certification/dante-certification-program (A very useful introduction to Dante, made by its makers: Audinate)
