@@ -44,15 +44,15 @@ When finishing entering configuration commands, ensure the following actions are
 1. Run `end` followed by `reload` to ensure the settings are saved and therefore persist across the next reboot of the switch;
 
 2. **Update the documentation according to the new configuration changes!!** At very least, the documentation should have its copy of the running
-   config updated. If a major change has been made, the expolanatory must also be updated.
+   config updated. If a major change has been made, the explanatory sections must also be updated.
 
 Basic setup:
 ------------
 
-In their most basic use-case, the switches' ports are set to the same VLAN. This has the effect of making the switch act as a dumb switch, allowing
+In their most basic use-case, the switches' ports are all set to the same VLAN. This has the effect of making the switch act as a dumb switch, allowing
 traffic to be forwarded between any ports.
 
-Example running configuration for use as a standalong dumb switch:
+Example running configuration for use as a standalone dumb switch:
 
 ```
 hostname "HP-2520G-8-PoE"
