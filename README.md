@@ -1,7 +1,7 @@
 BTS Networking Gear Documentation
 =================================
 
-This is a central public repository of documentation regarding the Backstage Technical Services networking gear.
+This is a central public repository of docmentation regarding the Backstage Technical Services networking gear.
 
 This includes VLAN configuration, router configuration, switch configuration, and Access point configuration, for both touring and static networks
 
@@ -28,4 +28,19 @@ Please follow the following conventions when contributing to the documentation:
 2. Files covering install gear are named "bts_install_[location of install]_xxxx";
 3. Document headers are entirely capitalised and of the "====" markdown size;
 4. Document sub-titles only have their first word capitalised, are terminated with a colon, and are of the "----" markdown size;
-5. Commands, key technical terms, and configuration files should be formatted as code by preceding and proceding them by "```".
+5. Commands, key technical terms, and configuration files should be formatted as code.
+
+Useful further reading/watching:
+--------------------------------
+
+For those wishing to learn more about fundamental networking principles, the following resources are highly informative:
+
+- https://www.youtube.com/c/PowerCertAnimatedVideos (for good visual introductions to various networking infrastructure principles)
+
+- https://www.youtube.com/c/NetworkChuck (for in-depth discussion and tutorials of networking software and hardware. The "free CCNA" series is particularly   worth watching)
+
+- https://www.youtube.com/results?search_query=My+Playhouse (An extremely varied channel, but with some good networking videos. Tends to approach networking concepts from a slightly different angle compared with the average IT YouTube channel - which is beneficial in the context of their use for backstage purposes, which center around theatrical effects rather than computer networks)
+
+- https://www.cisco.com/c/en/us/support/all-products.html (Useful for Cisco devices)
+
+- https://asp.arubanetworks.com/downloads;productIds=UHJvZHVjdDoxNDU4MDJlMi0yZTAwLTExZTgtYmY4Yy0zMzhmOGQwMWM1MjE%3D (Useful for HP (now Aruba) networking gear)
