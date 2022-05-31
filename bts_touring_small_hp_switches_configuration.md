@@ -11,8 +11,8 @@ Credentials:
 
 For management access
 
-username: manager\
-password [REDACTED]
+Username: manager\
+Password [REDACTED]
 
 Configuration access:
 ---------------------
