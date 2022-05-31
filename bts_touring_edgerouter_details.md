@@ -8,7 +8,7 @@ Terminology:
 ------------
 
 `WAN` =   Wide Area Network. In this context, it is the name of a router's interface which faces a higher-level public network. In the case of a home router, it is the
-          port which connectss to the DSL/cable connection from the street. In the case of the touring EdgeRouter, it is the interface which links the
+          port which connects to the DSL/cable connection from the street. In the case of the touring EdgeRouter, it is the interface which links the
           touring networks (specifically, the Internet VLAN; see the "touring_racks" file) to the wider university network so that internet access from within the
           touring network is possible.
           
@@ -16,7 +16,7 @@ Terminology:
         of a home router, it would correspond to the internal wireless antenna to which all devices are connected. In the case of larger networks,
         such as those in the BTS touring racks, it is common for the LAN to actually consist of multiple small networks (often implemented as
         VLANs, trunked within a physical interface), all on the router's
-        local trusted side. Having multiple separate networks allows for for granular control of what each network can and can't access.
+        local trusted side. Having multiple separate networks allows for for more granular control of what each network can and can't access.
         
 `Firewall`  = A means of regulating network traffic between devices and networks.
 
@@ -57,8 +57,15 @@ DHCP server:
 ------------
 
 A DHCP server instance is configured for each VLAN on the LAN interface. This allows devices connected, through the touring switches, to automatically
-negotiate an IP address. DHCP address ranges are restricted to allow certain address ranges to always remain free for devices which use a self-assigned
-static IP address
+negotiate an IP address. DHCP address ranges are restricted to allow certain address ranges to always remain free for devices which require a self-assigned
+static IP address.
+
+Examples of devices needing/using a self-assigned static IP address are as follows:
+
+- BirdDog IP NDI baluns;
+- BTS ArtNet node which doesn't listen to DHCP;
+- Older pieces of video gear;
+- Any item which is also used in a router-less networking setup.
 
 The following subnets are configured under thee DHCP server:
 
