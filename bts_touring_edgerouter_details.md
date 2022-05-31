@@ -7,7 +7,7 @@ as a router and firewall.
 Terminology
 -----------
 
-`WAN` =   Wide Area Network. In this context, it is the name of a router's interface which faces a hgiher-level public network. In the case of a home router, it is the
+`WAN` =   Wide Area Network. In this context, it is the name of a router's interface which faces a higher-level public network. In the case of a home router, it is the
           port which connectss to the DSL/cable connection from the street. In the case of the touring EdgeRouter, it is the interface which links the
           touring networks (specifically, the Internet VLAN; see the "touring_racks" file) to the wider university network so that internet access from within the
           touring network is possible.
@@ -15,10 +15,24 @@ Terminology
 `LAN` = Local Area Network. In this context, it is the name of a router's interface which faces the internal, local, network for which it is responsible. In the case
         of a home router, it would correspond to the internal wireless antenna to which all devices are connected. In the case of larger networks,
         such as those in the BTS touring racks, it is common for the LAN to actually consist of multiple small networks (often implemented as
-        VLANs within a physical interface), all on the router's
+        VLANs, trunked within a physical interface), all on the router's
         local trusted side. Having multiple separate networks allows for for granular control of what each network can and can't access.
         
 `Firewall`  = A means of regulating network traffic between devices and networks.
+
+Configuration Accessibility
+---------------------------
+
+It is easiest to configure the EdgeRouter from its web interface. Connect an ethernet cable between a management switch port (see "touring_racks" file)
+and a computer, wait for the computer to receive a DHCP lease, and enter the IP address `10.0.2.254` into the computer's web browser. A login prompt apppears. The credentials are as follows:
+
+Username: [REDACTED]
+Password: [REDACTED]
+
+Upon successful login, one is greeted with an overall management page. Whilst a little unintuitive, the various tabs along the top right of the management page allow for various aspects of the router's functionality to be configured.
+
+**IMPORTAANT: The EdgeRouter is arguably the most important piece of kit in the touring setup. Without it in a functional state, the touring VLANs
+would have no routing and no DHCP server. It is therefore imperative that configuration changes are documented here when they are made, and that no changes are made without sufficient time to test their ramifications in a non-show-critical environment**
 
 Interface Assignments
 ---------------------
