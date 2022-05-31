@@ -10,16 +10,16 @@ b) Be connected to a trunk port, so that all the necessary VLANs for the SSIDs c
 
 The APs have capability for 2.4GHz as well as the newer 5GHz WiFi bands. In their current configuration, the 5GHz capability is disabled because it can occasionally cause MAC-address-related issues on upstream routers/firewalls due to the fact that client devices tend to have two separate MAC addresses - one for their 2.4GHz radio and one for their 5GHz radio. 2.4GHz also provides better coverage that 5GHz - which is an important consideration when these APs are ised for touring purposes.
 
-Credentials
------------
+Credentials:
+------------
 
 For management access
 
 Username: admin\
 Password: [REDACTED]
 
-SSID details
-------------
+SSID details:
+-------------
 
 |SSID             |Password         |Associated VLAN        |Notes                                                            |
 |-----------------|-----------------|-----------------------|-----------------------------------------------------------------|
@@ -28,8 +28,8 @@ SSID details
 |   BTSLighting   |   [REDACTED]     |   Lighting (60)       |   Same network as used for ArtNet                               |
 |   BTSVideo      |   [REDACTED]     |   Video Control (100) |                                                                 |
 
-Configuration access
---------------------
+Configuration access:
+---------------------
 
 To access the switch configuration, a number of options are available:
 
@@ -64,8 +64,8 @@ When finishing entering configuration commands, ensure the following actions are
    effect, under the hood, of changing the running config. Using the web interface to make configuration changes is therefore no excuse for not
    updating this documentation's copy of the cunning config!
 
-Running configuration
----------------------
+Running configuration:
+----------------------
 
 NB: Replace "hostname BTS-AP-1" with whichever number the AP in question actually is designated
 
