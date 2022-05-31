@@ -44,7 +44,7 @@ To access the switch configuration, a number of options are available:
                     connected to a computer by means of an RS232 connection;
                     
 4. Web interface  - Whilst ostensibly nice and simple, these Cisco APs' web interfaces are buggy and slow. Avoid at all costs! Configuring via the CLI
-                    may seem harder, but with a little reading of the manual, saves much time and head-scratching in the long term! If the web interface
+                    may seem daunting, but with a little reading of the manual, saves much time and head-scratching in the long term! If the web interface
                     must be accessed, follow the same procedure as outlined for an SSH connection, but use the assigned IP address to establish an
                     HTTP connection instead.
                     
