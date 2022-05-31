@@ -19,8 +19,8 @@ List of BTS networking gear covered by this document:
 3. Small touring HP PoE-capable switches
 4. Cisco 3702 autonomous wireless access points (APs)
 
-Formatting and nomenclature conventions:
-----------------------------------------
+Formatting conventions:
+-----------------------
 
 Please follow the following conventions when contributing to the documentation:
 
