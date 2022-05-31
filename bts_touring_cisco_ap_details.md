@@ -29,6 +29,42 @@ SSID Details
 |   BTSLighting   |   [REDACTED]     |   Lighting (60)       |   Same network as used for ArtNet                               |
 |   BTSVideo      |   [REDACTED]     |   Video Control (100) |                                                                 |
 
+Configuration access
+--------------------
+
+To access the switch configuration, a number of options are available:
+
+1. SSH            - This is the most secure method. Temporarily connect the AP to a non-trunk port on a touring switch with an active DHCP server.
+                    It will receive a DHCP lease. Find this IP address (IP scan, or view the EdgeRouter DHCP lease table) and use it to establish
+                    an SSH connection to the AP.
+         
+2. Telnet         - This is much the same as SSH, except unencrypted;
+
+3. Serial console - This involves connecting a serial console cable to the RJ-45 port on the _back_ of an AP. This serial cable is then
+                    connected to a computer by means of an RS232 connection;
+                    
+4. Web interface  - Whilst ostensibly nice and simple, these Cisco APs' web interfaces are buggy and slow. Avoid at all costs! Configuring via the CLI
+                    may seem harder, but with a little reading of the manual, saves much time and head-scratching in the long term! If the web interface
+                    must be accessed, follow the same procedure as outlined for an SSH connection, but use the assigned IP address to establish an
+                    HTTP connection instead.
+                    
+Upon login, one is typically greeted with a command prompt which ends in `>`. To actuallly access useful settings from here, type `enable`.
+Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command prompt, useful commands can be run:
+
+`sh run`          - Shows the current configuration of the switch, in a user-friendly text file format. To back up the switch configuration, simply copy                       and paste the command's output into a notepad file, or some equivalent thereof.
+           
+ `conf t`         - Short for "configure terminal". Enters the command mode in which configuration commands may be entered, to change the switch
+                    settings.
+                    
+When finishing entering configuration commands, ensure the following actions are done:
+
+1. Run `end` followed by `reload` to ensure the settings are saved and therefore persist across the next reboot of the switch;
+
+2. **Update the documentation according to the new configuration changes!!** At very least, the documentation should have its copy of the running
+   config updated. If a major change has been made, the expolanatory must also be updated. Configuration changes made via the web interface have the
+   effect, under the hood, of changing the running config. Using the web interface to make configuration changes is therefore no excuse for not
+   updating this documentation's copy of the cunning config!
+
 Running Configuration
 ---------------------
 
