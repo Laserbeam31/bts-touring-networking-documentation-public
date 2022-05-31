@@ -18,6 +18,19 @@ Basic setup
 In their most basic use-case, the switches' ports are set to the same VLAN. This has the effect of making the switch act as a dumb switch, allowing
 traffic to be forwarded between any ports.
 
+Example running configuration for use as a standalong dumb switch:
+
+```
+hostname "HP-2520G-8-PoE"
+snmp-server community "public" unrestricted
+vlan 1
+   name "DEFAULT_VLAN"
+   untagged 1-8
+   ip address dhcp-bootp
+   exit
+password manager
+```
+
 Setup for use with BTS touring racks
 ------------------------------------
 
@@ -28,16 +41,14 @@ switch ports by "untagging" them to those particular ports.
 
 _Only VLANs which are tagged on a trunk port of the small switch may be accesed by or trunked through that switch._
 
-Example running configuration:
+Example running configuration for touring rack use:
 
 ```
 hostname "HP-2520G-8-PoE"
 snmp-server community "public" unrestricted
 vlan 1
    name "DEFAULT_VLAN"
-   no untagged 3-8
-   untagged 2,9-10
-   tagged 1
+   untagged 1-2
    ip address dhcp-bootp
    exit
 vlan 2
