@@ -18,7 +18,7 @@ For management access
 Username: admin\
 Password: [REDACTED]
 
-SSID Details
+SSID details
 ------------
 
 |SSID             |Password         |Associated VLAN        |Notes                                                            |
@@ -64,7 +64,7 @@ When finishing entering configuration commands, ensure the following actions are
    effect, under the hood, of changing the running config. Using the web interface to make configuration changes is therefore no excuse for not
    updating this documentation's copy of the cunning config!
 
-Running Configuration
+Running configuration
 ---------------------
 
 NB: Replace "hostname BTS-AP-1" with whichever number the AP in question actually is designated
