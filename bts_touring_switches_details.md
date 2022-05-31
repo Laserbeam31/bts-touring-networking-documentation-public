@@ -66,13 +66,27 @@ Configuration access
 
 To access the switch configuration, a number of options are available:
 
-1. SSH - This is the most secure method. Connect a computer to the "management" port on a touring switch, and SSH into the switch. The IP addresses of the 
-         switches can be ascertained by running an IP scan.
+1. SSH            - This is the most secure method. Connect a computer to the "management" port on a touring switch, and SSH into the switch. The IP                           addresses of the switches can be ascertained by running an IP scan.
          
-2. Telnet - This is much the same as SSH, except unencrypted.
+2. Telnet         - This is much the same as SSH, except unencrypted.
 
 3. Serial console - This involves connecting a serial console cable to the RJ-45 port on the _back_ of a touring switch. This serial cable is then
                     connected to a computer by means of an RS232 connection.
+                    
+Upon login, one is typically greeted with a command prompt which ends in `>`. To actuallly access useful settings from here, type `enable`.
+Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command prompt, useful commands can be run:
+
+`sh run`          - Shows the current configuration of the switch, in a user-friendly text file format. To back up the switch configuration, simply copy                       and paste the command's output into a notepad file, or some equivalent thereof.
+           
+ `conf t`         - Short for "configure terminal". Enters the command mode in which configuration commands may be entered, to change the switch
+                    settings.
+                    
+When finishing entering configuration commands, ensure the following actions are done:
+
+1. Run `end` followed by `reload` to ensure the settings are saved and therefore persist across the next reboot of the switch
+
+2. **Update the documentation according to the new configuration changes!!** At very least, the documentation should have its copy of the running
+   config updated. If a major change has been made, the expolanatory must also be updated.
 
 Running configuration
 ---------------------
