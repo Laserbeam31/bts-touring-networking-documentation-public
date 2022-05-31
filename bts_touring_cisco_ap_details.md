@@ -23,7 +23,7 @@ SSID Details
 
 |SSID             |Password         |Associated VLAN        |Notes                                                            |
 |-----------------|-----------------|-----------------------|-----------------------------------------------------------------|
-|   BTSRoam       |   [REDACTED]     |   Internet (34)       |   Sent through router-NATTed link to the BUCS Docking network   |
+|   BTSROAM       |   [REDACTED]     |   Internet (34)       |   Sent through router-NATTed link to the BUCS Docking network   |
 |   BTSSound      |   [REDACTED]     |   Sound Primary (50)  |   Dante Primary network used for management                     |
 |   BTSLighting   |   [REDACTED]     |   Lighting (60)       |   Same network as used for ArtNet                               |
 |   BTSVideo      |   [REDACTED]     |   Video Control (100) |                                                                 |
