@@ -39,10 +39,10 @@ Interface assignments:
 
 The following physical interfaces on the EdgeRouter are set to correspond to specific networks:
 
-`Eth2`  = WAN. This connects to the BUCS university network
+- `Eth2`  = WAN. This connects to the BUCS university network
 
-`Eth0`  = LAN. In the router's software, this is further split into VLANs - each corresponding to one on the touring switches (see VLANs.md).
-        A VLAN on Eth0 is designated as Eth0.xx, where xx is the VLAN ID.
+- `Eth0`  = LAN. In the router's software, this is further split into VLANs - each corresponding to one on the touring switches (see VLANs.md).
+            A VLAN on Eth0 is designated as Eth0.xx, where xx is the VLAN ID.
 
 Firewall:
 ---------
@@ -62,15 +62,15 @@ static IP address
 
 The following subnets are configured under thee DHCP server:
 
-`10.10.201.0/24`  = General VLAN 1. Lease pool 10.10.201.101-10.10.201.199.\
-`10.10.202.0/24`  = General VLAN 1. Lease pool 10.10.202.01-10.10.202.199.\
-`10.10.34.0/24`   = Internet VLAN. Lease pool 10.10.34.101-10.10.34.199.\
-`10.10.60.0/24`   = Lighting VLAN. Lease pool 10.10.60.101-10.10.60.199.\
-`10.10.50.0/24`   = Sound VLAN 1. Lease pool 10.10.50.101-10.10.50.199.\
-`10.10.51.0/24`   = Sound VLAN 2. Lease pool 10.10.51.101-10.10.51.199.\
-`10.0.2.0/24`     = Switch Management VLAN. Lease pool 10.0.2.101-10.0.2.199.\
-`10.10.10x.0/24`  = Video Balun VLAN 10x. Lease pool 10.10.10x.101-10.10.10x.199.\
-`10.10.100.0/24`  = Video Control VLAN. Lease pool 10.10.100.101-10.10.100.199.\
+- `10.10.201.0/24`  = General VLAN 1. Lease pool 10.10.201.101-10.10.201.199.\
+- `10.10.202.0/24`  = General VLAN 1. Lease pool 10.10.202.01-10.10.202.199.\
+- `10.10.34.0/24`   = Internet VLAN. Lease pool 10.10.34.101-10.10.34.199.\
+- `10.10.60.0/24`   = Lighting VLAN. Lease pool 10.10.60.101-10.10.60.199.\
+- `10.10.50.0/24`   = Sound VLAN 1. Lease pool 10.10.50.101-10.10.50.199.\
+- `10.10.51.0/24`   = Sound VLAN 2. Lease pool 10.10.51.101-10.10.51.199.\
+- `10.0.2.0/24`     = Switch Management VLAN. Lease pool 10.0.2.101-10.0.2.199.\
+- `10.10.10x.0/24`  = Video Balun VLAN 10x. Lease pool 10.10.10x.101-10.10.10x.199.\
+- `10.10.100.0/24`  = Video Control VLAN. Lease pool 10.10.100.101-10.10.100.199.\
 
 NAT:
 ----
