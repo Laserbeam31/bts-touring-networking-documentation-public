@@ -86,7 +86,7 @@ When finishing entering configuration commands, ensure the following actions are
 1. Run `end` followed by `reload` to ensure the settings are saved and therefore persist across the next reboot of the switch;
 
 2. **Update the documentation according to the new configuration changes!!** At very least, the documentation should have its copy of the running
-   config updated. If a major change has been made, the expolanatory must also be updated.
+   config updated. If a major change has been made, the explanatory sections must also be updated.
 
 Running configuration:
 ----------------------
