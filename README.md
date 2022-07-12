@@ -1,7 +1,7 @@
 BTS Networking Gear Documentation
 =================================
 
-This is a central public repository of documentation regarding the Backstage Technical Services networking gear.
+This is a central public repository of documentation regarding the Backstage Technical Services touring networking gear.
 
 This includes VLAN configuration, router configuration, switch configuration, and Access point configuration, for both touring and static networks
 
