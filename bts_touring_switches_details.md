@@ -1,5 +1,5 @@
-Documentation for the BTS Touring Network Switches
-==================================================
+Documentation for the BTS Touring Rack Network Switches
+=======================================================
 
 The managed BTS switches use VLANs to logically segregate traffic into virtual networks. Each VLAN can be thought of as its own virtual network. For example, unless you deliberately bridge VLAN 50 and 60, devices on V50 can all see each other
 but can't see anything on V60 even though they're both using the same switches and cable.
