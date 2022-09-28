@@ -197,288 +197,292 @@ interface GigabitEthernet0/1
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/2
  switchport access vlan 102
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/3
  switchport access vlan 103
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/4
  switchport access vlan 104
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/5
  switchport access vlan 105
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/6
  switchport access vlan 106
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/7
  switchport access vlan 107
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/8
  switchport access vlan 108
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/9
  switchport access vlan 100
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/10
  switchport access vlan 100
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/11
  switchport access vlan 100
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/12
  switchport access vlan 100
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/13
  switchport access vlan 100
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/14
  switchport access vlan 100
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/15
  switchport access vlan 100
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/16
  switchport access vlan 100
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/17
  switchport access vlan 60
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/18
  switchport access vlan 60
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/19
  switchport access vlan 60
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/20
  switchport access vlan 60
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/21
  switchport access vlan 60
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/22
  switchport access vlan 60
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/23
  switchport access vlan 60
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/24
  switchport access vlan 60
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/25
  switchport access vlan 50
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/26
  switchport access vlan 50
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/27
  switchport access vlan 50
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/28
  switchport access vlan 50
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/29
  switchport access vlan 50
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/30
  switchport access vlan 50
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/31
  switchport access vlan 51
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/32
  switchport access vlan 51
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/33
  switchport access vlan 34
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/34
  switchport access vlan 34
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/35
  switchport access vlan 34
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/36
  switchport access vlan 34
  switchport mode access
  spanning-tree portfast
  spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/37
  switchport access vlan 201
  switchport mode access
  spanning-tree portfast
- spanning-tree bpdufilter disable
-!         
+ spanning-tree bpdufilter enable
+!
 interface GigabitEthernet0/38
  switchport access vlan 201
  switchport mode access
  spanning-tree portfast
- spanning-tree bpdufilter disable
-!         
+ spanning-tree bpdufilter enable
+!
 interface GigabitEthernet0/39
- switchport access vlan 202
- switchport mode access
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
  spanning-tree portfast
- spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/40
- switchport access vlan 202
- switchport mode access
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
  spanning-tree portfast
- spanning-tree bpdufilter disable
-!         
+!
 interface GigabitEthernet0/41
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100-108
  switchport mode trunk
  spanning-tree portfast
-!         
+!
 interface GigabitEthernet0/42
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100-108
  switchport mode trunk
  spanning-tree portfast
-!         
+!
 interface GigabitEthernet0/43
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100-108
  switchport mode trunk
  spanning-tree portfast
-!         
+!
 interface GigabitEthernet0/44
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100-108
  switchport mode trunk
  spanning-tree portfast
-!         
+!
 interface GigabitEthernet0/45
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1-99,109-4094
  switchport mode trunk
  spanning-tree portfast
-!         
+!
 interface GigabitEthernet0/46
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1-99,109-4094
  switchport mode trunk
  spanning-tree portfast
-!         
+!
 interface GigabitEthernet0/47
  switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1-99,109-4094
  switchport mode trunk
  spanning-tree portfast
-!         
+!
 interface GigabitEthernet0/48
  switchport access vlan 2
  switchport mode access
  spanning-tree portfast
- spanning-tree bpdufilter enable
-!         
+!
 interface GigabitEthernet0/49
-!         
+!
 interface GigabitEthernet0/50
-!         
+!
 interface GigabitEthernet0/51
-!         
+!
 interface GigabitEthernet0/52
 !         
 interface Vlan1
