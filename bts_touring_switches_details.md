@@ -47,10 +47,13 @@ transmit between switches.
 
 To connect up trunk links in their most basic configuration, loop in and out of each switch on trunk ports A and B in a linear switch-to-switch 
 configuration:
+
 Switch 1 (Trunk A ports) -> Switch 2 (Trunk A ports) -> Switch 3 (Trunk A ports) -> [etc in a daisy-chain configuration through all switches] 
+
 Switch 1 (Trunk B ports) -> Switch 2 (Trunk B ports) -> Switch 3 (Trunk B ports) -> [etc in a daisy-chain configuration through all switches]
 
-Below is a diagram of a basic linear connection of the racks. The purple links represent the standing patch cables between the two switches in each rack; the black links represent long trunk cables between each rack. Each trunk has its own allocated ports on each switch:
+Below is a diagram of a basic linear connection of the racks. The purple links represent the standing patch cables between the two switches in each rack; 
+the black links represent long trunk cables between each rack. Each trunk has its own allocated ports on each switch:
  ![DAGs](https://github.com/Laserbeam31/bts-touring-networking-documentation-public/blob/main/linear_network_rack_connection.PNG)
 
 **It is important that each switch receive a separate trunk line for Trunk A and Trunk B. Failure to run both trunks will result in some VLANs being
@@ -69,7 +72,9 @@ to pass traffic at all.
 
 To connect up the trunk links in a redundant RSTP loop, loop in and out of each switch on trunk ports A and B, in a closed loop rather than linear
 configuration:
+
 Switch 1 (Trunk A ports) -> Switch 2 (Trunk A ports) -> Switch 3 (Trunk A ports) -> [etc through all switches] -> Switch (Trunk A ports) 
+
 Switch 1 (Trunk B ports) -> Switch 2 (Trunk B ports) -> Switch 3 (Trunk B ports) -> [etc through all switches] -> Switch (Trunk B ports)
 
 Below is a diagram of how the racks may be connected for redundant operation:
