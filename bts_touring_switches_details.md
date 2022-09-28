@@ -85,6 +85,10 @@ by the switches. This means that the only active trunk path for both A and B is 
 section of (for example) Trunk A becomes broken, the switches will automatically activate the previously-deactivated section and switch to sending  Trunk 
 A's traffic down this instead.
 
+It is worth noting that each switch has a few "Local Trunk" ports. These are trunk ports which, unlike Trunk A or Trunk B, are each trunking _all_ VLANs. 
+These should not be used for inter-rack trunking, but are only present for connecting devices such as the touring WiFi access points (see 
+"bts_touring_cisco_ap_details.md") which require low-bandwidth access to all VLANs.
+
 Untagged link configuration:
 ----------------------------
 
@@ -92,7 +96,15 @@ As per the touring racks' labelling, groups of ports are assigned particular dep
 trunk link to belonging to a specific VLAN is known as _untagging_. Ports which are untagged - as the name suggests - remove the VLAN tag from their
 outbound traffic, and apply it to their inbound traffic.
 
-The spanning tree settings for untagged ports are a little different from those of the _tagged_ trunk links. This is because trunk links are often (and indeed, should) be connected up in a redundant topology to improve resilience, whereas this is far less common in the case of untagged ports. This means that untagged ports are configured with the _portfast_ spanning tree setting enabled. The portfast setting bypasses some of the initial spanning tree negotiation stages (namely Listening and Learning) such that, upon connection of a client device, the Ethernet link comes up instantly. Only if a loop is _subsequently_ detected will an untagged port shut itself down to avoid a broadcast storm. This is in contrast to the behaviour of a trunk port: a trunk port, upon connectiion of an inter-switch trunk link, initially holds off from activating the link until it is certain that a problematic loop is not present. The advantage of enabling portfast is that it allows newly-connected links to come up faster; the disadvantage is that, since it bypasses the initial negotiation stages of the connection, and only subsequently shuts off a port if a redundant loop is detected, it increases the chance of a momentary broadcast loop.
+The spanning tree settings for untagged ports are a little different from those of the _tagged_ trunk links. This is because trunk links are often (and 
+indeed, should) be connected up in a redundant topology to improve resilience, whereas this is far less common in the case of untagged ports. This means 
+that untagged ports are configured with the _portfast_ spanning tree setting enabled. The portfast setting bypasses some of the initial spanning tree 
+negotiation stages (namely Listening and Learning) such that, upon connection of a client device, the Ethernet link comes up instantly. Only if a loop is 
+_subsequently_ detected will an untagged port shut itself down to avoid a broadcast storm. This is in contrast to the behaviour of a trunk port: a trunk 
+port, upon connectiion of an inter-switch trunk link, initially holds off from activating the link until it is certain that a problematic loop is not 
+present. The advantage of enabling portfast is that it allows newly-connected links to come up faster; the disadvantage is that, since it bypasses the 
+initial negotiation stages of the connection, and only subsequently shuts off a port if a redundant loop is detected, it increases the chance of a 
+momentary broadcast loop.
 
 Configuration access:
 ---------------------
