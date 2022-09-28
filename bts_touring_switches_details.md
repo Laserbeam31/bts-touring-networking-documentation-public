@@ -24,7 +24,7 @@ The VLANs currently assigned within BTS are as follows. Note that BTS also have 
 |100|Video control (i.e. web interfaces for projectors, matrixers, etc)|
 |101-108|Video isolated baluns|
 |109-119|Reserved for future video use. Not configured on switches.|
-|201-202|General usage (e.g. touring FOH engineer wants a connection to stage, or event control want to hop over our network)|
+|201|General usage (e.g. touring FOH engineer wants a connection to stage, or event control want to hop over our network)|
 |203-219|Reserved for future general use. Not configured on switches.|
 
 \* 'Not configured on switches' refers to switches which require VLANs to be explicitly configured on the switch in order to pass through traffic on it - some switches can be configured to allow all VLANs to pass through.
@@ -36,21 +36,45 @@ For more information, see the "touring_edgerouter" file.
 Trunk link configuration:
 -------------------------
 
-The trunk links between the touring switches in all the racks carry combined traffic for all VLANs between each rack. When network trafffic
+The trunk links between the touring switches carry combined traffic for multiple VLANs between each switch/rack. When network trafffic
 enters the switch on a trunk connection, it is sent to its relevant VLAN. Likewise, when traffic from a specific VLAN leaves the switch
-on a trunk link, it is tagged as belonging to a specific VLAN, so that receiving switches know to which VLAN to allocate the traffic, thus
-preventing it from ending up on an incorrect other VLAN.
+on a trunk link, it is tagged as belonging to a specific VLAN before being sent along a trunk, so that receiving switches know to which VLAN to allocate 
+the traffic, thus preventing it from ending up on an incorrect other VLAN.
 
-For the sake of redundancy, the trunk links are configured with _Rapid Spanning Tree Protocol_ (RSTP). 
-In essence, RSTP prevents loops of trunk lines becoming active on a network - only allowing certain sections of
+The touring racks use _two_ gigabit trunk lines: A and B. Each trunk is responsible for carrying ("trunking") different selection of VLANs, thus minimising 
+load per trunk. Each switch in each rack therefore includes trunk connections for Trunk A and Trunk B. If only one trunk is connected, not all VLANs will 
+transmit between switches.
+
+To connect up trunk links in their most basic configuration, loop in and out of each switch on trunk ports A and B in a linear switch-to-switch 
+configuration:
+Switch 1 (Trunk A ports) -> Switch 2 (Trunk A ports) -> Switch 3 (Trunk A ports) -> [etc in a daisy-chain configuration through all switches] 
+Switch 1 (Trunk B ports) -> Switch 2 (Trunk B ports) -> Switch 3 (Trunk B ports) -> [etc in a daisy-chain configuration through all switches]
+
+ ![DAGs](https://raw.githubusercontent.com/Laserbeam31/bts-touring-networking-documentation-public/blob/main/linear_network_rack_connection.PNG)
+
+**It is important that each switch receive a separate trunk line for Trunk A and Trunk B. Failure to run both trunks will result in some VLANs being
+inaccessible**
+
+For the sake of redundancy, both trunk links A and B are configured with provision for _Rapid Spanning Tree Protocol_ (RSTP). 
+In essence, RSTP prevents loops of identical trunk lines from becoming active on a network, only allowing certain sections of
 any loop to be active at any one time, and only switching over to different parts of the loop if the
 original sections become unusable. This allows for more than one
-trunk cable to be run between two or more pairs of trunk ports on two or more switches. 
+trunk cable to be run between two or more pairs of identical trunk ports on two or more switches. 
 If one of these trunk cables breaks, the switches automatically change
 over to using another physical trunk link, thus minimising downtime. RSTP ensures that no more than one physical trunk link out of a
-redundant inter-switch set is used at any one time. Having more than one trunk link active at any one time between the same set of switches
+redundant inter-switch set is used at any one time. Having more than one identical trunk link active at any one time between the same set of switches
 would result in a _broadcast storm_ whereby traffic flows indefinitely through the duplicate links and inhibits the switches' ability
 to pass traffic at all.
+
+To connect up the trunk links in a redundant RSTP loop, loop in and out of each switch on trunk ports A and B, in a closed loop rather than linear
+configuration:
+Switch 1 (Trunk A ports) -> Switch 2 (Trunk A ports) -> Switch 3 (Trunk A ports) -> [etc through all switches] -> Switch (Trunk A ports) 
+Switch 1 (Trunk B ports) -> Switch 2 (Trunk B ports) -> Switch 3 (Trunk B ports) -> [etc through all switches] -> Switch (Trunk B ports)
+
+As an example, if Trunks A and B are connected in the above redundant loop configuration, one section of each trunk's "loop" becomes disabled automatically 
+by the switches. This means that the only active trunk path for both A and B is linear (much like the above basic linear example). If, however, an active 
+section of (for example) Trunk A becomes broken, the switches will automatically activate the previously-deactivated section and switch to sending  Trunk 
+A's traffic down this instead.
 
 Untagged link configuration:
 ----------------------------
