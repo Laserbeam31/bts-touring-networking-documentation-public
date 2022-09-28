@@ -50,7 +50,7 @@ configuration:
 Switch 1 (Trunk A ports) -> Switch 2 (Trunk A ports) -> Switch 3 (Trunk A ports) -> [etc in a daisy-chain configuration through all switches] 
 Switch 1 (Trunk B ports) -> Switch 2 (Trunk B ports) -> Switch 3 (Trunk B ports) -> [etc in a daisy-chain configuration through all switches]
 
- ![DAGs](https://raw.githubusercontent.com/Laserbeam31/bts-touring-networking-documentation-public/blob/main/linear_network_rack_connection.PNG)
+ ![DAGs](https://github.com/Laserbeam31/bts-touring-networking-documentation-public/blob/main/linear_network_rack_connection.PNG)
 
 **It is important that each switch receive a separate trunk line for Trunk A and Trunk B. Failure to run both trunks will result in some VLANs being
 inaccessible**
