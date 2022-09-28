@@ -86,8 +86,9 @@ section of (for example) Trunk A becomes broken, the switches will automatically
 A's traffic down this instead.
 
 It is worth noting that each switch has a few "Local Trunk" ports. These are trunk ports which, unlike Trunk A or Trunk B, are each trunking _all_ VLANs. 
-These should not be used for inter-rack trunking, but are only present for connecting devices such as the touring WiFi access points (see 
-"bts_touring_cisco_ap_details.md") which require low-bandwidth access to all VLANs.
+These should not be used for inter-rack trunking, but are only present for connecting devices such as the master rack's EdgeRouter (see
+"bts_touring_edgerouter_details.md") and the touring WiFi access points (see "bts_touring_cisco_ap_details.md") which require low-bandwidth access to all 
+VLANs.
 
 Untagged link configuration:
 ----------------------------
