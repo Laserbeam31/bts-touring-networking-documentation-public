@@ -69,8 +69,7 @@ Examples of devices needing/using a self-assigned static IP address are as follo
 
 The following subnets are configured under thee DHCP server:
 
-- `10.10.201.0/24`  = General VLAN 1. Lease pool 10.10.201.101-10.10.201.199.\
-- `10.10.202.0/24`  = General VLAN 1. Lease pool 10.10.202.01-10.10.202.199.\
+- `10.10.201.0/24`  = General VLAN. Lease pool 10.10.201.101-10.10.201.199.\
 - `10.10.34.0/24`   = Internet VLAN. Lease pool 10.10.34.101-10.10.34.199.\
 - `10.10.60.0/24`   = Lighting VLAN. Lease pool 10.10.60.101-10.10.60.199.\
 - `10.10.50.0/24`   = Sound VLAN 1. Lease pool 10.10.50.101-10.10.50.199.\
