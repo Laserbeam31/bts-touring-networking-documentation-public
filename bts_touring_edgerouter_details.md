@@ -81,5 +81,5 @@ The following subnets are configured under thee DHCP server:
 NAT:
 ----
 
-A NAT "masquerade" rule is set on the ETH2 WAN interface to allow all traffic emanating from it to appear as though it is coming from the router itself,
+A NAT "masquerade" rule is set on the ETH2 WAN interface to allow all traffic emerging from it to appear as though it is coming from the router itself,
 rather than from the various locally-networked devices from which is actually emanating.
