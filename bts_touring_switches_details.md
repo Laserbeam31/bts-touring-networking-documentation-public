@@ -56,8 +56,8 @@ Below is a diagram of a basic linear connection of the racks. The purple links r
 the black links represent long trunk cables between each rack. Each trunk has its own allocated ports on each switch:
  ![DAGs](https://github.com/Laserbeam31/bts-touring-networking-documentation-public/blob/main/linear_network_rack_connection.PNG)
 
-**It is important that each switch receive a separate trunk line for Trunk A and Trunk B. Failure to run both trunks will result in some VLANs being
-inaccessible**
+It is important that each switch receive a separate trunk line for Trunk A and Trunk B. Failure to run both trunks will result in some VLANs being
+inaccessible
 
 For the sake of redundancy, both trunk links A and B are configured with provision for _Rapid Spanning Tree Protocol_ (RSTP). 
 In essence, RSTP prevents loops of identical trunk lines from becoming active on a network, only allowing certain sections of
@@ -104,8 +104,7 @@ negotiation stages (namely Listening and Learning) such that, upon connection of
 _subsequently_ detected will an untagged port shut itself down to avoid a broadcast storm. This is in contrast to the behaviour of a trunk port: a trunk 
 port, upon connectiion of an inter-switch trunk link, initially holds off from activating the link until it is certain that a problematic loop is not 
 present. The advantage of enabling portfast is that it allows newly-connected links to come up faster; the disadvantage is that, since it bypasses the 
-initial negotiation stages of the connection, and only subsequently shuts off a port if a redundant loop is detected, it increases the chance of a 
-momentary broadcast loop.
+initial negotiation stages of the connection, it increases the chance of a momentary broadcast loop.
 
 Configuration access:
 ---------------------
@@ -131,8 +130,7 @@ When finishing entering configuration commands, ensure the following actions are
 
 1. Run `end` followed by `reload` to ensure the settings are saved and therefore persist across the next reboot of the switch;
 
-2. **Update the documentation according to the new configuration changes!!** At very least, the documentation should have its copy of the running
-   config updated. If a major change has been made, the explanatory sections must also be updated.
+2. Update the documentation, if any significant permanent change has been made.
 
 Running configuration:
 ----------------------
