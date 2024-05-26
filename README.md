@@ -18,6 +18,7 @@ List of BTS networking gear covered by this repository:
 2. Touring rack Ubiquiti EdgeRouter
 3. Small touring HP PoE-capable switches
 4. Cisco 3702 autonomous wireless access points (APs)
+5. BUCS Founders' Hall interface switch
 
 Formatting conventions:
 -----------------------
