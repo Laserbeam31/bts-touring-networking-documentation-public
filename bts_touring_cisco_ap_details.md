@@ -1,7 +1,7 @@
 Documentation for the BTS Cisco 3702 Touring APs
 ================================================
 
-The BTS 3702 APs are set up to be able to access VLANs for Sound (VLAn 50), Lighting (VLAN 60),
+The BTS 3702 APs are set up to be able to access VLANs for Sound (VLAN 50), Lighting (VLAN 60),
 Video Control (VLAN 100), and Internet (VLAN 34) through a set of different SSIDs, each mapped to a specific VLAN.
 
 For the APs to work correctly, they must:
