@@ -14,8 +14,8 @@ Additionally, this switch has a separate bank of ports configured as "PoE inject
 sending PoE into the connection used by a device needing it. This functionality is useful because neither of the network switches in the FoH
 touring rack does PoE, thus necessitating external injection of some kind.
 
-Switch port allocations
------------------------
+Switch port allocations:
+------------------------
 |Port range|Purpose|Notes|
 |----------|-------|-----|
 |1-6|Docking|"Wired Eduroam"|
@@ -24,3 +24,4 @@ Switch port allocations
 |15-16|PoE injection pair 2||
 |17-18|PoE injection pair 3||
 |19-20|PoE injection pair 4||
+|23-24|BUCS FSH trunk||
