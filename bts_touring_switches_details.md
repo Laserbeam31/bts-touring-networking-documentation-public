@@ -27,11 +27,8 @@ The VLANs currently assigned within BTS are as follows. Note that BTS also have 
 |201|General usage (e.g. touring FOH engineer wants a connection to stage, or event control want to hop over our network)|
 |203-219|Reserved for future general use. Not configured on switches.|
 
-\* 'Not configured on switches' refers to switches which require VLANs to be explicitly configured on the switch in order to pass through traffic on it - some switches can be configured to allow all VLANs to pass through.
-
-Each VLAN is configured to receive DHCP from the EdgeRouter in the master network rack. The EdgeRouter also provides routing between VLANs and networks,
-where necessary.
-For more information, see the "touring_edgerouter" file.
+Each VLAN is configured to receive DHCP from the EdgeRouter in the master network rack. The EdgeRouter also provides routing between VLANs and 
+networks, where necessary. For more information, see the "touring_edgerouter" file.
 
 Trunk link configuration:
 -------------------------
