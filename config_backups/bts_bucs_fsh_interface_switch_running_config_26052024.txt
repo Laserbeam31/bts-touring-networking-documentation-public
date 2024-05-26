@@ -1,0 +1,69 @@
+; J9299A Configuration Editor; Created on release #J.15.09.0028
+; Ver #06:04.08.00.01.14.05:1a
+hostname "HP-2520G-24-PoE"
+ip default-gateway 10.0.2.254
+snmp-server community "public" unrestricted
+vlan 1
+   name "DEFAULT_VLAN"
+   no untagged 1-22
+   untagged 23-24
+   ip address dhcp-bootp
+   exit
+vlan 2
+   name "MANAGEMENT"
+   untagged 22
+   tagged 21
+   ip address 10.0.2.16 255.255.0.0
+   exit
+vlan 34
+   name "INTERNET"
+   tagged 21-22
+   no ip address
+   exit
+vlan 50
+   name "SOUND-PRI"
+   tagged 21-22
+   no ip address
+   exit
+vlan 60
+   name "LX"
+   tagged 21-22
+   no ip address
+   exit
+vlan 100
+   name "VIDEO"
+   tagged 21-22
+   no ip address
+   exit
+vlan 400
+   name "BTS-VLAN"
+   untagged 7-12
+   tagged 23-24
+   no ip address
+   exit
+vlan 453
+   name "DOCKING"
+   untagged 1-6
+   tagged 23-24
+   no ip address
+   exit
+vlan 501
+   name "VLAN501"
+   untagged 13-14
+   no ip address
+   exit
+vlan 502
+   name "VLAN502"
+   untagged 15-16
+   no ip address
+   exit
+vlan 503
+   name "VLAN503"
+   untagged 17-18
+   no ip address
+   exit
+vlan 504
+   name "VLAN504"
+   untagged 19-20
+   no ip address
+   exit

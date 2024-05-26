@@ -1,0 +1,208 @@
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname BTS-AP-2
+!
+!
+logging rate-limit console 9
+enable secret 5 $1$pMAc$yPZB.wVYw6mysGeiY8aRZ0
+enable password 7 121B04151C1B5C53
+!
+no aaa new-model
+no ip igmp snooping
+no ip cef
+!
+!
+!
+!
+dot11 syslog
+dot11 vlan-name internet vlan 34
+dot11 vlan-name lighting vlan 60
+dot11 vlan-name management vlan 2
+dot11 vlan-name sound-prim vlan 50
+!
+dot11 ssid BTSLighting
+   vlan 60
+   authentication open
+   authentication key-management wpa version 2
+   mbssid guest-mode
+   wpa-psk ascii 7 0026273534571211002E481C594856
+!
+dot11 ssid BTSROAM
+   vlan 34
+   authentication open
+   authentication key-management wpa version 2
+   mbssid guest-mode
+   wpa-psk ascii 7 096E7A3A29090E05040300787B757B
+!
+dot11 ssid BTSSound
+   vlan 50
+   authentication open
+   authentication key-management wpa version 2
+   mbssid guest-mode
+   wpa-psk ascii 7 143526383C08333C2B273767724254
+!
+dot11 ssid BTSVideo
+   vlan 100
+   authentication open
+   authentication key-management wpa version 2
+   mbssid guest-mode
+   wpa-psk ascii 7 04793F353F2D555906160145425A5F
+!
+!
+dot11 guest
+!
+!
+!
+username Cisco password 7 0509070D2F5C1E5E
+username su2bc password 7 06040E23425E594E
+!
+!
+bridge irb
+!
+!
+!
+interface Dot11Radio0
+ no ip address
+ !
+ encryption vlan 50 mode ciphers aes-ccm
+ !
+ encryption vlan 100 mode ciphers aes-ccm
+ !
+ encryption vlan 60 mode ciphers aes-ccm
+ !
+ encryption vlan 34 mode ciphers aes-ccm
+ !
+ ssid BTSLighting
+ !
+ ssid BTSROAM
+ !
+ ssid BTSSound
+ !
+ ssid BTSVideo
+ !
+ antenna gain 0
+ stbc
+ mbssid
+ station-role root
+!
+interface Dot11Radio0.2
+ encapsulation dot1Q 2 native
+ bridge-group 1
+ bridge-group 1 subscriber-loop-control
+ bridge-group 1 spanning-disabled
+ bridge-group 1 block-unknown-source
+ no bridge-group 1 source-learning
+ no bridge-group 1 unicast-flooding
+!
+interface Dot11Radio0.34
+ encapsulation dot1Q 34
+ bridge-group 34
+ bridge-group 34 subscriber-loop-control
+ bridge-group 34 spanning-disabled
+ bridge-group 34 block-unknown-source
+ no bridge-group 34 source-learning
+ no bridge-group 34 unicast-flooding
+!
+interface Dot11Radio0.50
+ encapsulation dot1Q 50
+ bridge-group 50
+ bridge-group 50 subscriber-loop-control
+ bridge-group 50 spanning-disabled
+ bridge-group 50 block-unknown-source
+ no bridge-group 50 source-learning
+ no bridge-group 50 unicast-flooding
+!
+interface Dot11Radio0.60
+ encapsulation dot1Q 60
+ bridge-group 60
+ bridge-group 60 subscriber-loop-control
+ bridge-group 60 spanning-disabled
+ bridge-group 60 block-unknown-source
+ no bridge-group 60 source-learning
+ no bridge-group 60 unicast-flooding
+!
+interface Dot11Radio0.100
+ encapsulation dot1Q 100
+ bridge-group 100
+ bridge-group 100 subscriber-loop-control
+ bridge-group 100 spanning-disabled
+ bridge-group 100 block-unknown-source
+ no bridge-group 100 source-learning
+ no bridge-group 100 unicast-flooding
+!
+interface Dot11Radio1
+ no ip address
+ shutdown
+ antenna gain 0
+ peakdetect
+ no dfs band block
+ channel dfs
+ station-role root
+ bridge-group 1
+ bridge-group 1 subscriber-loop-control
+ bridge-group 1 spanning-disabled
+ bridge-group 1 block-unknown-source
+ no bridge-group 1 source-learning
+ no bridge-group 1 unicast-flooding
+!
+interface GigabitEthernet0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0.2
+ encapsulation dot1Q 2 native
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+ no bridge-group 1 source-learning
+!
+interface GigabitEthernet0.34
+ encapsulation dot1Q 34
+ bridge-group 34
+ bridge-group 34 spanning-disabled
+ no bridge-group 34 source-learning
+!
+interface GigabitEthernet0.50
+ encapsulation dot1Q 50
+ bridge-group 50
+ bridge-group 50 spanning-disabled
+ no bridge-group 50 source-learning
+!
+interface GigabitEthernet0.60
+ encapsulation dot1Q 60
+ bridge-group 60
+ bridge-group 60 spanning-disabled
+ no bridge-group 60 source-learning
+!
+interface GigabitEthernet0.100
+ encapsulation dot1Q 100
+ bridge-group 100
+ bridge-group 100 spanning-disabled
+ no bridge-group 100 source-learning
+!
+interface BVI1
+ ip address 10.0.2.52 255.255.0.0
+!
+ip default-gateway 10.0.2.254
+ip forward-protocol nd
+ip http server
+no ip http secure-server
+ip http help-path http://www.cisco.com/warp/public/779/smbiz/prodconfig/help/eag
+!
+!
+snmp-server community public RO
+bridge 1 route ip
+!
+!
+!
+line con 0
+line vty 0 4
+ login local
+ transport input all
+!
+end

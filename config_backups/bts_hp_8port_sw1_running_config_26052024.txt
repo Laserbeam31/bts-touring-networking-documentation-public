@@ -1,0 +1,112 @@
+; J9298A Configuration Editor; Created on release #J.15.09.0028
+; Ver #06:04.08.00.01.14.05:1a
+hostname "bts-hp-8-port-1"
+ip default-gateway 10.0.2.254
+snmp-server community "public" unrestricted
+vlan 1
+   name "DEFAULT_VLAN"
+   no untagged 1-8
+   untagged 9-10
+   ip address dhcp-bootp
+   exit
+vlan 2
+   name "MGMT"
+   untagged 1-2
+   tagged 9-10
+   ip address 10.0.2.11 255.255.0.0
+   exit
+vlan 34
+   name "INTERNET"
+   tagged 1-2,9-10
+   no ip address
+   exit
+vlan 50
+   name "SOUND PRI"
+   tagged 1-2,9-10
+   no ip address
+   exit
+vlan 51
+   name "SOUND SEC"
+   tagged 9-10
+   no ip address
+   exit
+vlan 60
+   name "LX"
+   untagged 3-4
+   tagged 1-2,9-10
+   no ip address
+   exit
+vlan 100
+   name "VID CTRL"
+   untagged 6-8
+   tagged 1-2,9-10
+   no ip address
+   exit
+vlan 101
+   name "VID #1"
+   untagged 5
+   tagged 9-10
+   no ip address
+   exit
+vlan 102
+   name "VID #2"
+   tagged 9-10
+   no ip address
+   exit
+vlan 103
+   name "VID #3"
+   tagged 9-10
+   no ip address
+   exit
+vlan 104
+   name "VID #4"
+   tagged 9-10
+   no ip address
+   exit
+vlan 105
+   name "VID #5"
+   tagged 9-10
+   no ip address
+   exit
+vlan 106
+   name "VID #6"
+   tagged 9-10
+   no ip address
+   exit
+vlan 107
+   name "VID #7"
+   tagged 9-10
+   no ip address
+   exit
+vlan 108
+   name "VID #8"
+   tagged 9-10
+   no ip address
+   exit
+vlan 201
+   name "SPARE"
+   tagged 9-10
+   no ip address
+   exit
+spanning-tree
+spanning-tree 3 admin-edge-port
+spanning-tree 4 admin-edge-port
+spanning-tree 5 admin-edge-port
+spanning-tree 6 admin-edge-port
+spanning-tree 7 admin-edge-port
+spanning-tree 8 admin-edge-port
+spanning-tree config-name "Trunk1"
+spanning-tree instance ist 3 path-cost 20000
+spanning-tree instance ist 7 path-cost 20000
+spanning-tree instance ist 8 path-cost 20000
+spanning-tree instance 1 vlan 2 34 100-108 201
+spanning-tree instance 1 9 path-cost 1000
+spanning-tree instance 1 10 path-cost 1000
+spanning-tree instance 2 vlan 50 51 60
+spanning-tree instance 2 9 path-cost 1000
+spanning-tree instance 2 10 path-cost 1000
+spanning-tree instance 3 vlan 1
+spanning-tree instance 3 9 path-cost 1000
+spanning-tree instance 3 10 path-cost 1000
+password manager
+password operator

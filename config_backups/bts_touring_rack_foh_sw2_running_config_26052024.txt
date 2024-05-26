@@ -1,0 +1,397 @@
+!
+! Last configuration change at 02:26:45 UTC Mon Mar 1 1993 by admin
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service unsupported-transceiver
+!
+hostname bts-cisco-48-2
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$Q94M$Xn.rXFj3DakFM9C0q8EQg1
+!
+username admin password 7 094E4F0B17154745
+aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
+system mtu routing 1500
+ip domain-name bts-crew.com
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3759148672
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3759148672
+ revocation-check none
+ rsakeypair TP-self-signed-3759148672
+!
+!
+crypto pki certificate chain TP-self-signed-3759148672
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 33373539 31343836 3732301E 170D3933 30333031 30303032
+  35375A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 37353931
+  34383637 3230819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100D582 E58F3A66 BB4A9F90 93EE4118 E52C4EB3 9EBB24AB B41AE862 1EA47038
+  D95A9FD7 9A026BF2 8702FE3F DC5CF53D EF07E7B9 97AB4BB6 06E6F358 7A798DF9
+  3479CB2F 7C8732BE 083FDA37 7F6D0971 16FAE964 7761FEC5 1B435426 00F2D5D8
+  7547D70F 5963310F FA064742 D0638D53 F2EC9512 A43554AB 96D2F351 68DD7F64
+  D0F10203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 143D7C9B 76800CA4 CDFB6071 4151CE5D B20AE36B 9D301D06
+  03551D0E 04160414 3D7C9B76 800CA4CD FB607141 51CE5DB2 0AE36B9D 300D0609
+  2A864886 F70D0101 05050003 81810048 FED0D981 64CD9091 6F9ED0F9 6CD04199
+  F578C14C 0357DF4A 83D958F0 B0D69831 AE2998CB EFAA2822 A8F09F8C 4A4D9F31
+  2DF36314 F6EAEC74 67EF7862 CA7CCD5E 691D21F1 C6790D0F 3C8FC38D 3199BC35
+  A15A3C83 825D8DA6 F6387FDB E10F98DE 246FBDF8 464974C7 BC3DA6F7 03036EB6
+  C882B0B5 DE6B92C3 A7357E09 37BF9E
+        quit
+!
+!
+!
+!
+!
+no errdisable detect cause gbic-invalid
+!
+spanning-tree mode mst
+spanning-tree extend system-id
+!
+spanning-tree mst configuration
+ name Trunk1
+ instance 1 vlan 2, 34, 100-108, 201
+ instance 2 vlan 50-51, 60
+ instance 3 vlan 1
+!
+spanning-tree mst 0-3 priority 4096
+!
+vlan internal allocation policy ascending
+lldp run
+!
+ip ssh version 2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/1
+ switchport access vlan 101
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ switchport access vlan 102
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/3
+ switchport access vlan 103
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/4
+ switchport access vlan 104
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/5
+ switchport access vlan 105
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/6
+ switchport access vlan 106
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/7
+ switchport access vlan 107
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/8
+ switchport access vlan 108
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/9
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/10
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/11
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/12
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/13
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/14
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/15
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/16
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/17
+ switchport access vlan 60
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+!
+interface GigabitEthernet0/18
+ switchport access vlan 60
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+!
+interface GigabitEthernet0/19
+ switchport access vlan 60
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+!
+interface GigabitEthernet0/20
+ switchport access vlan 60
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+!
+interface GigabitEthernet0/21
+ switchport access vlan 60
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+!
+interface GigabitEthernet0/22
+ switchport access vlan 60
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+!
+interface GigabitEthernet0/23
+ switchport access vlan 60
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+!
+interface GigabitEthernet0/24
+ switchport access vlan 60
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+!
+interface GigabitEthernet0/25
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/26
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/27
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/28
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/29
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/30
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/31
+ switchport access vlan 51
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/32
+ switchport access vlan 51
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/33
+ switchport access vlan 34
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/34
+ switchport access vlan 34
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/35
+ switchport access vlan 34
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/36
+ switchport access vlan 34
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/37
+ switchport access vlan 201
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+ spanning-tree bpdufilter enable
+!
+interface GigabitEthernet0/38
+ switchport access vlan 201
+ switchport mode access
+ speed 100
+ spanning-tree portfast
+ spanning-tree bpdufilter enable
+!
+interface GigabitEthernet0/39
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ spanning-tree mst 0-2 cost 5000
+!
+interface GigabitEthernet0/40
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ spanning-tree mst 0-2 cost 5000
+!
+interface GigabitEthernet0/41
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 2,34,100-108,201
+ switchport mode trunk
+ spanning-tree mst 0-2 cost 5000
+!
+interface GigabitEthernet0/42
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 2,34,100-108,201
+ switchport mode trunk
+ spanning-tree mst 0-2 cost 5000
+!
+interface GigabitEthernet0/43
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 2,34,100-108,201
+ switchport mode trunk
+ spanning-tree mst 0-2 cost 5000
+!
+interface GigabitEthernet0/44
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 2,34,100-108,201
+ switchport mode trunk
+ spanning-tree mst 0-2 cost 5000
+!
+interface GigabitEthernet0/45
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 50,51,60
+ switchport mode trunk
+ spanning-tree mst 0-2 cost 5000
+!
+interface GigabitEthernet0/46
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 50,51,60
+ switchport mode trunk
+ spanning-tree mst 0-2 cost 5000
+!
+interface GigabitEthernet0/47
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 50,51,60
+ switchport mode trunk
+ spanning-tree mst 0-2 cost 5000
+!
+interface GigabitEthernet0/48
+ switchport access vlan 2
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/49
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 2,34,100-108,201
+ switchport mode trunk
+ spanning-tree mst 0-1 cost 200
+!
+interface GigabitEthernet0/50
+!
+interface GigabitEthernet0/51
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 50,51,60
+ switchport mode trunk
+ spanning-tree mst 0,2 cost 200
+!
+interface GigabitEthernet0/52
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+!
+interface Vlan2
+ ip address 10.0.2.2 255.255.0.0
+ no ip route-cache
+!
+ip default-gateway 10.0.2.254
+ip http server
+ip http secure-server
+!
+!
+snmp-server community public RO
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ password 7 1415130902147A7C
+ transport input telnet
+line vty 5 15
+!
+end
