@@ -1,16 +1,16 @@
 BTS Touring Master Rack EdgeRouter Documentation
 ================================================
 
-The BTS FoH master touring rack contains a Ubiquiti EdgeRouter. This performs both as a DHCP server for the touring racks' VLANs (see "touring_racks"), and also
-as a router and firewall.
+The BTS FoH master touring rack contains a Ubiquiti EdgeRouter. This performs both as a DHCP server for the touring racks' VLANs (see _bts_touring_switches_details.md_),
+and also as a router and firewall.
 
 Terminology:
 ------------
 
 `WAN` =   Wide Area Network. In this context, it is the name of a router's interface which faces a higher-level public network. In the case of a home router, it is the
           port which connects to the DSL/cable connection from the street. In the case of the touring EdgeRouter, it is the interface which links the
-          touring networks (specifically, the Internet VLAN; see the "touring_racks" file) to the wider university network so that internet access from within the
-          touring network is possible.
+          touring networks (specifically, the Internet VLAN; see the _bts_touring_switches_details.md_ file) to the wider university network so that
+          internet access from within the touring network is possible.
           
 `LAN` = Local Area Network. In this context, it is the name of a router's interface which faces the internal, local, network for which it is responsible. In the case
         of a home router, it would correspond to the internal wireless antenna to which all devices are connected. In the case of larger networks,
@@ -23,7 +23,7 @@ Terminology:
 Configuration accessibility:
 ----------------------------
 
-It is easiest to configure the EdgeRouter from its web interface. Connect an ethernet cable between a management switch port (see "touring_racks" file)
+It is easiest to configure the EdgeRouter from its web interface. Connect an ethernet cable between a management switch port (see _bts_touring_switches_details.md_ file)
 and a computer, wait for the computer to receive a DHCP lease, and enter the IP address `10.0.2.254` into the computer's web browser. A login prompt apppears. The credentials are as follows:
 
 Username: [REDACTED]\
@@ -43,7 +43,7 @@ The following physical interfaces on the EdgeRouter are set to correspond to spe
 
 - `Eth2`  = WAN. This connects to the BUCS university campus network.
 
-- `Eth0`  = LAN. In the router's software, this is further split into VLANs - each corresponding to one on the touring switches (see "touring_racks"
+- `Eth0`  = LAN. In the router's software, this is further split into VLANs - each corresponding to one on the touring switches ( "touring_racks"
             file). A VLAN on Eth0 is designated in the EdgeRouter UI as `Eth0.xx`, where xx is the VLAN ID.
 
 Firewall:
