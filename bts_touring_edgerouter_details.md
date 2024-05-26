@@ -1,7 +1,7 @@
 BTS Touring Master Rack EdgeRouter Documentation
 ================================================
 
-The BTS FoH master touring rack contains a Ubiquiti _EdgeRouter_. This performs both as a DHCP server for the touring racks' VLANs (see _bts_touring_switches_details.md_),
+The BTS FoH master touring rack contains a Ubiquiti _EdgeRouter_. This acts both as a DHCP server for the touring racks' VLANs (see _bts_touring_switches_details.md_),
 and also as a router and firewall.
 
 Terminology:
@@ -52,8 +52,12 @@ Firewall:
 
 The EdgeRouter has firewall functionality built into it. This means that it can allow or block traffic between networks (both physical or VLAN-based).
 Using "default block incoming" policies, the configuration is set such that local inter-VLAN traffic (e.g. between LX, Sound, Video networks) is 
-prohibited, and only traffic from the Internet VLAN is allowed through to the router's WAN interface. Uninitiated traffic into the WAN connection 
+prohibited, and only traffic from the Internet VLAN is allowed out through to the router's WAN interface. Uninitiated traffic into the WAN connection 
 (i.e. that which isn't in reponse to any outgoing connection established from the local side of the router) interface is blocked by default.
+
+NB: As of 2021, an additional firewall "permit" rule is in place allowing traffic from the Video Control network (VLAN 100) out to the internet as well.
+This is because Resolume, our live video media server software, looks for a network interface with internet access as a means of determining where to
+output a Newtek NDI stream.
 
 The only inter-VLAN exception, in terms of routing, is an "allow" rule for traffic from the VID CTRL VLAN (VLAN 100) to the MGMT VLAN (VLAN 2). This
 is for the sake of convenience, so that the head of Video (who's also generally tasked with looking after the network as a whole) can access management
