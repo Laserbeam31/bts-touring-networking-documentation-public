@@ -28,8 +28,9 @@ Please follow the following conventions when contributing to the documentation:
 2. Files covering install gear are named "bts_install_[location of install]_xxxx";
 3. Document headers are entirely capitalised and of the "====" markdown size;
 4. Document sub-titles only have their first word capitalised, are terminated with a colon, and are of the "----" markdown size;
-5. Commands, key technical terms, and configuration files should be formatted as code;
-6. When introducing new documentation files for new pieces of gear, please include a suitable reference in the above master list.
+5. Commands and technical terms should be formatted as code;
+6. When introducing new documentation files for new pieces of gear, please include a suitable reference in the above master list;
+7. Text-based switch/AP configs should be placed in the "config_backups" folder in this repository.
 
 Useful further reading/watching:
 --------------------------------
