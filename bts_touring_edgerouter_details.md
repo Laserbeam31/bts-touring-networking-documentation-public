@@ -1,7 +1,7 @@
 BTS Touring Master Rack EdgeRouter Documentation
 ================================================
 
-The BTS FoH master touring rack contains a Ubiquiti EdgeRouter. This performs both as a DHCP server for the touring racks' VLANs (see _bts_touring_switches_details.md_),
+The BTS FoH master touring rack contains a Ubiquiti _EdgeRouter_. This performs both as a DHCP server for the touring racks' VLANs (see _bts_touring_switches_details.md_),
 and also as a router and firewall.
 
 Terminology:
