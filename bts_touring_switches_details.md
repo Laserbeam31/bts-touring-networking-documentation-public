@@ -57,23 +57,20 @@ the black links represent long trunk cables between each rack. Each trunk has it
 It is important that each switch receive a separate trunk line for Trunk A and Trunk B. Failure to run both trunks will result in some VLANs being
 inaccessible
 
-For the sake of redundancy, both trunk links A and B are configured with provision for _Rapid Spanning Tree Protocol_ (RSTP). 
-In essence, RSTP prevents loops of identical trunk lines from becoming active on a network, only allowing certain sections of
-any loop to be active at any one time, and only switching over to different parts of the loop if the
-original sections become unusable. This allows for more than one
-trunk cable to be run between two or more pairs of identical trunk ports on two or more switches. 
-If one of these trunk cables breaks, the switches automatically change
-over to using another physical trunk link, thus minimising downtime. RSTP ensures that no more than one physical trunk link out of a
-redundant inter-switch set is used at any one time. Having more than one identical trunk link active at any one time between the same set of switches
-would result in a _broadcast storm_ whereby traffic flows indefinitely through the duplicate links and inhibits the switches' ability
-to pass traffic at all.
+For the sake of redundancy, both trunk links A and B are configured with provision for _Multiple Spanning Tree Protocol_ (MSTP). In essence, MSTP 
+prevents loops of identical trunk lines from becoming active on a network, only allowing certain sections of any loop to be active at any one time,
+and only switching over to different parts of the loop if the original sections become unusable. This allows for more than one trunk cable to be run
+between two or more pairs of identical trunk ports on two or more switches. If one of these trunk cables breaks, the switches automatically change
+over to using another physical trunk link, thus minimising downtime. MSTP ensures that no more than one physical trunk link out of a redundant 
+inter-switch set is used at any one time. Having more than one identical trunk link simultaneously active between the same set of switches would
+result in a _broadcast storm_ whereby packets flow indefinitely through the duplicate links and inhibit the switches' ability to pass traffic at all.
 
-To connect up the trunk links in a redundant RSTP loop, loop in and out of each switch on trunk ports A and B, in a closed loop rather than linear
+To connect up the trunk links in a redundant loop, loop in and out of each switch on trunk ports A and B, in a circular rather than linear
 configuration:
 
-Switch 1 (Trunk A ports) -> Switch 2 (Trunk A ports) -> Switch 3 (Trunk A ports) -> [etc through all switches] -> Switch (Trunk A ports) 
+Switch 1 (Trunk A ports) -> Switch 2 (Trunk A ports) -> Switch 3 (Trunk A ports) -> [etc through all switches] -> Switch 1 (Trunk A ports) 
 
-Switch 1 (Trunk B ports) -> Switch 2 (Trunk B ports) -> Switch 3 (Trunk B ports) -> [etc through all switches] -> Switch (Trunk B ports)
+Switch 1 (Trunk B ports) -> Switch 2 (Trunk B ports) -> Switch 3 (Trunk B ports) -> [etc through all switches] -> Switch 1 (Trunk B ports)
 
 Below is a diagram of how the racks may be connected for redundant operation:
 
@@ -81,7 +78,7 @@ Below is a diagram of how the racks may be connected for redundant operation:
 
 As an example, if Trunks A and B are connected in the above redundant loop configuration, one section of each trunk's "loop" becomes disabled automatically 
 by the switches. This means that the only active trunk path for both A and B is linear (much like the above basic linear example). If, however, an active 
-section of (for example) Trunk A becomes broken, the switches will automatically activate the previously-deactivated section and switch to sending  Trunk 
+section of (for example) Trunk A becomes broken, the switches will automatically activate the previously-deactivated section and switch to sending Trunk 
 A's traffic down this instead.
 
 It is worth noting that each switch has a few "Local Trunk" ports. These are trunk ports which, unlike Trunk A or Trunk B, are each trunking _all_ VLANs. 
@@ -94,430 +91,42 @@ Untagged link configuration:
 
 As per the touring racks' labelling, groups of ports are assigned particular departmental VLANs. The process whereby ports are allocated from being a
 trunk link to belonging to a specific VLAN is known as _untagging_. Ports which are untagged - as the name suggests - remove the VLAN tag from their
-outbound traffic, and apply it to their inbound traffic.
+outgoing traffic, and apply it to their incoming traffic.
 
 The spanning tree settings for untagged ports are a little different from those of the _tagged_ trunk links. This is because trunk links are often (and 
 indeed, should) be connected up in a redundant topology to improve resilience, whereas this is far less common in the case of untagged ports. This means 
 that untagged ports are configured with the _portfast_ spanning tree setting enabled. The portfast setting bypasses some of the initial spanning tree 
-negotiation stages (namely Listening and Learning) such that, upon connection of a client device, the Ethernet link comes up instantly. Only if a loop is 
+negotiation stages (namely _listening_ and _learning_) such that, upon connection of a client device, the Ethernet link comes up instantly. Only if a loop is 
 _subsequently_ detected will an untagged port shut itself down to avoid a broadcast storm. This is in contrast to the behaviour of a trunk port: a trunk 
-port, upon connectiion of an inter-switch trunk link, initially holds off from activating the link until it is certain that a problematic loop is not 
+port, upon connectiion of an inter-switch uplink, initially holds off from activating the link until it is certain that a problematic loop is not 
 present. The advantage of enabling portfast is that it allows newly-connected links to come up faster; the disadvantage is that, since it bypasses the 
-initial negotiation stages of the connection, it increases the chance of a momentary broadcast loop.
+initial negotiation stages of the connection, it increases the chance of a momentary loop and associated broadcast storm.
 
 Configuration access:
 ---------------------
 
 To access the switch configuration, a number of options are available:
 
-1. SSH            - This is the most secure method. Connect a computer to the "management" port on a touring switch, and SSH into the switch. The IP                           addresses of the switches can be ascertained by running an IP scan;
+1. SSH            - This is the most secure method. Connect a computer to the "management" port on a touring switch, and SSH into the switch. The IP
+                    addresses of the switches can be ascertained by running an IP scan;
          
-2. Telnet         - This is much the same as SSH, except unencrypted;
+3. Telnet         - This is much the same as SSH, except unencrypted;
 
-3. Serial console - This involves connecting a serial console cable to the RJ-45 port on the _back_ of a touring switch. This serial cable is then
-                    connected to a computer by means of an RS232 connection.
+4. Serial console - This involves connecting a Cisco serial console cable to the RJ-45 port on the _back_ of a touring switch. This serial cable is then
+                    connected to a computer by means of an RS232 connection. A serial console session can then be opened on the host computer
+                    using a program such as PuTTY or Minicom.
                     
 Upon login, one is typically greeted with a command prompt which ends in `>`. To actuallly access useful settings from here, type `enable`.
-Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command prompt, useful commands can be run:
+Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command
+prompt, useful commands can be run:
 
-`sh run`          - Shows the current configuration of the switch, in a user-friendly text file format. To back up the switch configuration, simply copy                       and paste the command's output into a notepad file, or some equivalent thereof.
+`sh run`          - Shows the current configuration of the switch, in a user-friendly text file format. To back up the switch configuration, simply copy                                          and paste the command's output into a notepad file, or some equivalent thereof.
            
- `conf t`         - Short for "configure terminal". Enters the command mode in which _configuration_ commands may be entered, to change the switch
+ `conf t`         - Short for "configure terminal". Enters the console mode in which _configuration_ commands may be entered, to change the switch
                     settings.
                     
 When finishing entering configuration commands, ensure the following actions are done:
 
-1. Run `end` followed by `reload` to ensure the settings are saved and therefore persist across the next reboot of the switch;
+1. Run `end` followed by `copy running-config startup-config` to ensure the settings changes are saved and therefore persist across the next reboot of the switch;
 
 2. Update the documentation, if any significant permanent change has been made.
-
-Running configuration:
-----------------------
-
-```
-Current configuration : 9185 bytes
-!
-! Last configuration change at 19:47:36 UTC Tue Mar 2 1993 by admin
-!
-version 15.0
-no service pad
-service timestamps debug datetime msec
-service timestamps log datetime msec
-service password-encryption
-!
-hostname bts-cisco-48-2
-!
-boot-start-marker
-boot-end-marker
-!
-enable secret 5 [REDACTED]
-!
-username admin password 7 [REDACTED]
-aaa new-model
-!
-!
-!
-!
-!
-!
-!
-!
-aaa session-id common
-system mtu routing 1500
-ip routing
-ip domain-name bts-crew.com
-!
-!
-!
-!
-crypto pki trustpoint TP-self-signed-[REDACTED]
- enrollment selfsigned
- subject-name cn=IOS-Self-Signed-Certificate-[REDACTED]
- revocation-check none
- rsakeypair TP-self-signed-[REDACTED]
-!
-!
-crypto pki certificate chain TP-self-signed-[REDACTED]
- certificate self-signed 01
-  [CERTIFICATE DETAILS REDACTED]
-        quit
-!         
-!         
-!         
-!         
-!         
-!         
-spanning-tree mode rapid-pvst
-spanning-tree extend system-id
-!         
-vlan internal allocation policy ascending
-lldp run  
-!         
-ip ssh version 2
-!         
-!         
-!         
-!         
-!         
-!         
-!         
-!         
-!         
-!         
-!         
-!         
-!         
-interface GigabitEthernet0/1
- switchport access vlan 101
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/2
- switchport access vlan 102
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/3
- switchport access vlan 103
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/4
- switchport access vlan 104
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/5
- switchport access vlan 105
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/6
- switchport access vlan 106
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/7
- switchport access vlan 107
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/8
- switchport access vlan 108
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/9
- switchport access vlan 100
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/10
- switchport access vlan 100
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/11
- switchport access vlan 100
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/12
- switchport access vlan 100
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/13
- switchport access vlan 100
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/14
- switchport access vlan 100
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/15
- switchport access vlan 100
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/16
- switchport access vlan 100
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/17
- switchport access vlan 60
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/18
- switchport access vlan 60
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/19
- switchport access vlan 60
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/20
- switchport access vlan 60
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/21
- switchport access vlan 60
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/22
- switchport access vlan 60
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/23
- switchport access vlan 60
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/24
- switchport access vlan 60
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/25
- switchport access vlan 50
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/26
- switchport access vlan 50
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/27
- switchport access vlan 50
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/28
- switchport access vlan 50
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/29
- switchport access vlan 50
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/30
- switchport access vlan 50
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/31
- switchport access vlan 51
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/32
- switchport access vlan 51
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/33
- switchport access vlan 34
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/34
- switchport access vlan 34
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/35
- switchport access vlan 34
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/36
- switchport access vlan 34
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter disable
-!
-interface GigabitEthernet0/37
- switchport access vlan 201
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter enable
-!
-interface GigabitEthernet0/38
- switchport access vlan 201
- switchport mode access
- spanning-tree portfast
- spanning-tree bpdufilter enable
-!
-interface GigabitEthernet0/39
- switchport trunk encapsulation dot1q
- switchport mode trunk
- spanning-tree portfast
-!
-interface GigabitEthernet0/40
- switchport trunk encapsulation dot1q
- switchport mode trunk
- spanning-tree portfast
-!
-interface GigabitEthernet0/41
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 100-108
- switchport mode trunk
- spanning-tree portfast
-!
-interface GigabitEthernet0/42
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 100-108
- switchport mode trunk
- spanning-tree portfast
-!
-interface GigabitEthernet0/43
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 100-108
- switchport mode trunk
- spanning-tree portfast
-!
-interface GigabitEthernet0/44
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 100-108
- switchport mode trunk
- spanning-tree portfast
-!
-interface GigabitEthernet0/45
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 1-99,109-4094
- switchport mode trunk
- spanning-tree portfast
-!
-interface GigabitEthernet0/46
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 1-99,109-4094
- switchport mode trunk
- spanning-tree portfast
-!
-interface GigabitEthernet0/47
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 1-99,109-4094
- switchport mode trunk
- spanning-tree portfast
-!
-interface GigabitEthernet0/48
- switchport access vlan 2
- switchport mode access
- spanning-tree portfast
-!
-interface GigabitEthernet0/49
-!
-interface GigabitEthernet0/50
-!
-interface GigabitEthernet0/51
-!
-interface GigabitEthernet0/52
-!         
-interface Vlan1
- no ip address
-!         
-interface Vlan2
- ip address 10.0.2.2 255.255.0.0
-!         
-ip http server
-ip http secure-server
-!         
-!         
-!         
-!         
-!         
-!         
-line con 0
-line vty 0 4
- transport input ssh
-line vty 5 15
-!         
-end    
-```
