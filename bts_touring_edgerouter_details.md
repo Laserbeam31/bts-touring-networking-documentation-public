@@ -79,14 +79,14 @@ Examples of devices needing/using a self-assigned static IP address are as follo
 
 The following subnets are configured:
 
-- `10.10.201.0/24`  = General VLAN. No DHCP server.\
-- `10.10.34.0/24`   = Internet VLAN. DHCP server lease pool: `10.10.34.101-10.10.34.199`.\
-- `10.10.60.0/24`   = Lighting VLAN. DHCP server lease pool: `10.10.60.101-10.10.60.199`.\
-- `10.10.50.0/24`   = Sound VLAN 1. DHCP server lease pool: `10.10.50.101-10.10.50.199`.\
-- `10.10.51.0/24`   = Sound VLAN 2. No DHCP server.\
-- `10.0.2.0/24`     = Switch Management VLAN. DHCP server lease pool: `10.0.2.101-10.0.2.199`.\
-- `10.10.10x.0/24`  = Video Balun VLAN 10x. No DHCP server.\
-- `10.10.100.0/24`  = Video Control VLAN. DHCP server lease pool: `10.10.100.101-10.10.100.199`.\
+- `10.10.201.0/24`  = General VLAN. No DHCP server.
+- `10.10.34.0/24`   = Internet VLAN. DHCP server lease pool: `10.10.34.101-10.10.34.199`.
+- `10.10.60.0/24`   = Lighting VLAN. DHCP server lease pool: `10.10.60.101-10.10.60.199`.
+- `10.10.50.0/24`   = Sound VLAN 1. DHCP server lease pool: `10.10.50.101-10.10.50.199`.
+- `10.10.51.0/24`   = Sound VLAN 2. No DHCP server.
+- `10.0.2.0/24`     = Switch Management VLAN. DHCP server lease pool: `10.0.2.101-10.0.2.199`.
+- `10.10.10x.0/24`  = Video Balun VLAN 10x. No DHCP server.
+- `10.10.100.0/24`  = Video Control VLAN. DHCP server lease pool: `10.10.100.101-10.10.100.199`.
 
 NAT:
 ----
