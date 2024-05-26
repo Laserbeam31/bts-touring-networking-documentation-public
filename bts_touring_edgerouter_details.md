@@ -98,3 +98,51 @@ NAT:
 
 A NAT "masquerade" rule is set on the ETH2 WAN interface to allow all traffic emerging from it to appear as though it is coming from the router itself,
 rather than from the various local network devices from which is actually emanating.
+
+OpenVPN tunneling:
+------------------
+
+It is worth noting, as something of a useful aside, that the EdgeRouter supports _VPN_ connections as a means of site-to-site linking. Site-to-site
+VPN links allow two remote networks on the internet to be "tunneled" together by means of an encrypted communication channel over the public internet,
+in effect allowing them to communicate with each other as though a really long network cable were strung between them. This is an extremely
+useful situation, and is often leveraged by commercial networks as a means of linking geographically separate office blocks and/or multimedia networks.
+
+Specifically, the EdgeRouter is known to work with OpenVPN client connection profiles, allowing it to act as a "client" to an external VPN server, in 
+turn allowing its own local networks to reach the remote VPN server's LAN (assuming suitable firewall rules are in place). This method was used in 2024
+to achieve remote configuration access to the Video Control VLAN from a geographically distinct home network.
+
+The OpenVPN functionality of the EdgeRouter is not exposed through the web interface. Instead, the **client connection profile** and the associated 
+**pre-shared/TLS key** file must be copied across as plain text files using its command prompt. The key is used to encrypt the traffic passing through
+the site-to-site VPN tunnel. Both the client connection profile (typically ending  in `.ovpn`) and the key file (usually ending in `.p12` or `.pem`) 
+must be copied across. Copying the files across is best done using the `scp` command or by simply pasting the contents of each file into a command line 
+text editor instance.
+
+Once the files are transferred across, run the following commands to activate the connection:
+
+1. Enter the router's configuration mode: `configure`;
+2. Create a virtual "tunnel" interface on the router whose parameters are defined by a .ovpn config file: `set interfaces openvpn vtun0 config-file
+   /config/config.ovpn`, where `config.ovpn` is the OpenVPN client connection profile (plain text file);
+3. Commit changes to the router: `commit`;
+4. Exit: `exit`
+
+Below is shown an example of a _.ovpn_ client connection profile as used in 2024:
+
+```
+dev tun
+persist-tun
+persist-key
+cipher AES-256-CBC
+verb 5
+ifconfig 10.20.213.2 10.20.213.1
+secret /config/auth/edgerouter-millbank-vpn.key
+auth SHA256
+port 1197
+remote millbanklink.ddns.net
+route 10.20.46.0 255.255.255.0
+route 10.20.211.0 255.255.255.0
+route 10.20.212.0 255.255.255.0
+ping 10
+ping-restart 60
+```
+
+Note the line `secret /config/auth/edgerouter-millbank-vpn.key`. This refers to the second file - the pre-shared key.
