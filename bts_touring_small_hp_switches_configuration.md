@@ -23,7 +23,7 @@ To access the switch configuration, a number of options are available:
          
 2. Telnet         - This is much the same as SSH, except unencrypted;
 
-3. Serial console - This involves connecting a serial console cable to the RJ-45 port on the left-hand side of a switch's front panel. This serial cable is                     then connected to a computer by means of an RS232 connection.
+3. Serial console - This involves connecting a serial console cable to the dedicated RJ-45 port on the left-hand side of a switch's front panel. This serial cable is then connected to a computer by means of an RS232 connection.
                    
 Upon login, one is typically greeted with a command prompt which ends in `>`. To actuallly access useful settings from here, type `enable`.
 Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command prompt,
