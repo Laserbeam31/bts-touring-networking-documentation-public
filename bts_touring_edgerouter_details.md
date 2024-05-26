@@ -12,19 +12,20 @@ Terminology:
           touring networks (specifically, the Internet VLAN; see the _bts_touring_switches_details.md_ file) to the wider university network so that
           internet access from within the touring network is possible.
           
-`LAN` = Local Area Network. In this context, it is the name of a router's interface which faces the internal, local, network for which it is responsible. In the case
+`LAN` = Local Area Network. In this context, it is the name of a router's interface which faces its internal, local, network. In the case
         of a home router, it would correspond to the internal wireless antenna to which all devices are connected. In the case of larger networks,
         such as those in the BTS touring racks, it is common for the LAN to actually consist of multiple small networks (often implemented as
-        VLANs, trunked within a physical interface), all on the router's
-        local trusted side. Having multiple separate networks allows for for more granular control of what each network can and can't access.
+        VLANs, trunked within a physical interface), all on the router's local trusted side. Having multiple separate networks allows for for more 
+        granular control of what each network can and can't access.
         
 `Firewall`  = A means of regulating network traffic between devices and networks.
 
 Configuration accessibility:
 ----------------------------
 
-It is easiest to configure the EdgeRouter from its web interface. Connect an ethernet cable between a management switch port (see _bts_touring_switches_details.md_ file)
-and a computer, wait for the computer to receive a DHCP lease, and enter the IP address `10.0.2.254` into the computer's web browser. A login prompt apppears. The credentials are as follows:
+It is easiest to configure the EdgeRouter from its web interface. Connect an ethernet cable between a management switch port 
+(see _bts_touring_switches_details.md_ file) and a computer, wait for the computer to receive a DHCP lease, and enter the IP address `10.0.2.254` into 
+the computer's web browser. A login prompt apppears. The credentials are as follows:
 
 Username: [REDACTED]\
 Password: [REDACTED]
