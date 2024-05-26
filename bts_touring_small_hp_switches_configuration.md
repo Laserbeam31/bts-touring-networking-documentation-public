@@ -2,9 +2,9 @@ BTS Small HP PoE Touring Switches Documentation
 ===============================================
 
 The small HP PoE-capable switches are useful for a number of BTS applications. They are especially useful for large events involving the
-touring racks, because the Cisco switches in the touring racks (see "touring racks" file) cannot supply PoE.
+touring racks, because the Cisco switches in the touring racks (see _bts_touring_switches_details.md_ file) cannot supply PoE.
 
-Due to their versatility, these switches do not have a particular permanent configuration setup. But a couple of common scenarios are discussed below.
+Due to their versatility, these switches do not have a particular permanent configuration setup. A couple of common config scenarios are discussed below.
 
 Credentials:
 ------------
@@ -26,7 +26,8 @@ To access the switch configuration, a number of options are available:
 3. Serial console - This involves connecting a serial console cable to the RJ-45 port on the left-hand side of a switch's front panel. This serial cable is                     then connected to a computer by means of an RS232 connection.
                    
 Upon login, one is typically greeted with a command prompt which ends in `>`. To actuallly access useful settings from here, type `enable`.
-Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command prompt, useful commands can be run:
+Enter the password by the prompt which appears. Upon entry of a correct password, a command prompt appears, ending in `#`. From this command prompt,
+useful commands can be run:
 
 `sh run`          - Shows the current configuration of the switch, in a user-friendly text file format. To back up the switch configuration, simply copy                       and paste the command's output into a notepad file, or some equivalent thereof.
            
@@ -37,7 +38,9 @@ Enter the password by the prompt which appears. Upon entry of a correct password
 
 Note that the configuration commands for HP switches are somewhat different to those for Cisco switches. The most notable difference one is likely
 to encounter is the way in which VLANs are allocated to ports and trunk lines. Whereas on a Cisco switch, a trunk port may be allocated simply
-by selecting the interface and stating `switchport mode trunk`, HP switches require that VLANs be tagged to a specific port - which implicitly makes the port in question a trunk line. Untagged non-trunking "access" ports are allocated by _untagging_ VLANs to specific interfaces. For detailed example commands, see the configuration examples below.
+by selecting the interface and stating `switchport mode trunk`, HP switches require that VLANs be actively tagged to a specific port - which implicitly
+makes the port in question a trunk line. Untagged non-trunking "access" ports are allocated by _untagging_ VLANs to specific interfaces. For detailed example 
+commands, see the configuration examples below.
 
 When finishing entering configuration commands, ensure the following actions are done:
 
@@ -68,10 +71,9 @@ password manager
 Setup for use with BTS touring racks:
 -------------------------------------
 
-In this case, one or two ports are assigned to be trunk ports. These uplink with a trunk port on one of the main touring switches
-in one of the racks. VLANs which
-are desirable to be accessed/trunked through the small switch are "tagged" to the small switch's trunk port(s). Some VLANs may also be brought out on other
-switch ports by "untagging" them to those particular ports.
+In this case, one or two ports are assigned to be trunk ports. These uplink with a trunk port on one of the main touring switches in one of the racks. 
+VLANs which are desired to be accessed/trunked through the small switch are "tagged" to the small switch's trunk port(s). Some VLANs may also be brought
+out on other switch ports by "untagging" them to those particular ports.
 
 _Only VLANs which are tagged on a trunk port of the small switch may be accesed by or trunked through that switch._
 
