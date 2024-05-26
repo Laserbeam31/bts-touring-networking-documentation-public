@@ -1,15 +1,20 @@
 Documentation for the BTS Touring Rack Network Switches
 =======================================================
 
-The managed BTS switches use VLANs to logically segregate traffic into virtual networks. Each VLAN can be thought of as its own virtual network. For example, unless you deliberately bridge VLAN 50 and 60, devices on V50 can all see each other
-but can't see anything on V60 even though they're both using the same switches and cable.
+The managed BTS switches use VLANs (Virtual Local Area Networks) to logically segregate traffic. Each VLAN can be thought of as its own virtual network. For 
+example, unless you deliberately bridge VLAN 50 and 60, devices on VLAN 50 can all see each other but can't see anything on V60 even though they're both using
+the same switches and cable.
 
-When data enters the network at a port on a switch, the port is configured to 'tag' it as belonging to a particular VLAN. This tagged traffic can be passed to any other switch that works with IEEE 802.1q ('dot1q'), even if the switch is from a different manufacturer. When the traffic leaves the switch by a port that isn't connected to another switch, the switch removes the VLAN tag and this has the benefit of ensuring more basic devices aren't confused by it.
+When data enters the network at a port on a switch, the port is configured to 'tag' it as belonging to a particular VLAN. This tagged traffic can be passed 
+to any other switch that works with IEEE 802.1q ('dot1q'), even if the switch is from a different manufacturer. These inter-switch 802.1q links are commonly
+termed "trunks". When the traffic leaves the switch by a port that isn't connected to another switch, the switch removes the VLAN tag and this has the benefit
+of ensuring more basic devices aren't confused by it.
 
 VLANs on the switches:
 ----------------------
 
-The VLANs currently assigned within BTS are as follows. Note that BTS also have VLAN 400 on the BUCS network; this is provisioned on request and should be considered entirely separately to these numbers:
+The VLANs currently assigned within BTS are as follows. Note that BTS also have VLAN 400 on the BUCS network; this is provisioned on request and should 
+be considered entirely separately to these numbers:
 
 |No.|Usage|
 |---|---|
@@ -24,7 +29,7 @@ The VLANs currently assigned within BTS are as follows. Note that BTS also have 
 |100|Video control (i.e. web interfaces for projectors, matrixers, etc)|
 |101-108|Video isolated baluns|
 |109-119|Reserved for future video use. Not configured on switches.|
-|201|General usage (e.g. touring FOH engineer wants a connection to stage, or event control want to hop over our network)|
+|201|General usage (e.g. touring FOH engineer wants a connection to stage, or Event Control want to hop over our network)|
 |203-219|Reserved for future general use. Not configured on switches.|
 
 Each VLAN is configured to receive DHCP from the EdgeRouter in the master network rack. The EdgeRouter also provides routing between VLANs and 
@@ -38,8 +43,8 @@ enters the switch on a trunk connection, it is sent to its relevant VLAN. Likewi
 on a trunk link, it is tagged as belonging to a specific VLAN before being sent along a trunk, so that receiving switches know to which VLAN to allocate 
 the traffic, thus preventing it from ending up on an incorrect other VLAN.
 
-The touring racks use _two_ gigabit trunk lines: A and B. Each trunk is responsible for carrying ("trunking") different selection of VLANs, thus minimising 
-load per trunk. Each switch in each rack therefore includes trunk connections for Trunk A and Trunk B. If only one trunk is connected, not all VLANs will 
+The touring racks use _two_ gigabit trunk lines: A and B. Each trunk is responsible for carrying ("trunking") a different selection of VLANs, thus minimising 
+load per trunk. Each switch in each rack therefore includes trunk connections for _Trunk A_ and _Trunk B_. If only one trunk is connected, not all VLANs will 
 transmit between switches.
 
 To connect up trunk links in their most basic configuration, loop in and out of each switch on trunk ports A and B in a linear switch-to-switch 
@@ -81,7 +86,7 @@ by the switches. This means that the only active trunk path for both A and B is 
 section of (for example) Trunk A becomes broken, the switches will automatically activate the previously-deactivated section and switch to sending Trunk 
 A's traffic down this instead.
 
-It is worth noting that each switch has a few "Local Trunk" ports. These are trunk ports which, unlike Trunk A or Trunk B, are each trunking _all_ VLANs. 
+It is worth noting that each switch has a few _Local Trunk_ ports. These are trunk ports which, unlike Trunk A or Trunk B, are each trunking _all_ VLANs. 
 These should not be used for inter-rack trunking, but are only present for connecting devices such as the master rack's EdgeRouter (see
 "bts_touring_edgerouter_details.md") and the touring WiFi access points (see "bts_touring_cisco_ap_details.md") which require low-bandwidth access to all 
 VLANs.
