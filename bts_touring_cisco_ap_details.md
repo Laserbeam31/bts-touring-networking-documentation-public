@@ -6,7 +6,8 @@ Video Control (VLAN 100), and Internet (VLAN 34) through a set of different SSID
 
 For the APs to work correctly, they must:
 1. Be connected to a PoE-capable switch or PoE injector;
-2. Be connected to a "Local Trunk" port on the touring racks, so that all the necessary VLANs for the SSIDs can be accessed.
+2. Be connected to a "Local Trunk" port on the touring racks (or any other equivalently configured switch port), so that all
+   the necessary VLANs for the SSIDs can be accessed.
 
 The APs are intended only for use with the touring rack networks, and are not set up for standalone use!
 
