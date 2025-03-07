@@ -1,6 +1,8 @@
 BTS Networking Gear Documentation
 =================================
 
+NOTE: This repository has been deprecated. Documentation for BTS network switches now lives on the new BTS Wiki: https://wiki.bts-crew.com/index.php/BTS_Touring_Networking_Gear
+
 This is a central public repository of documentation regarding the Backstage Technical Services touring networking gear.
 
 This includes VLAN configuration, router configuration, switch configuration, and Access point configuration, for both touring and static networks
